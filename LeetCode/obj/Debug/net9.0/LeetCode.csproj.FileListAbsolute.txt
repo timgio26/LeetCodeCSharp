@@ -12,3 +12,4 @@ C:\Users\timgi\Desktop\dev\C#\LeetCode\LeetCode\obj\Debug\net9.0\refint\LeetCode
 C:\Users\timgi\Desktop\dev\C#\LeetCode\LeetCode\obj\Debug\net9.0\LeetCode.pdb
 C:\Users\timgi\Desktop\dev\C#\LeetCode\LeetCode\obj\Debug\net9.0\LeetCode.genruntimeconfig.cache
 C:\Users\timgi\Desktop\dev\C#\LeetCode\LeetCode\obj\Debug\net9.0\ref\LeetCode.dll
+C:\Users\timgi\Desktop\dev\C#\LeetCode\LeetCode\obj\Debug\net9.0\LeetCode.sourcelink.json

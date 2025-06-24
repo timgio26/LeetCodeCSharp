@@ -172,3 +172,4 @@ C:\Users\timgi\Desktop\dev\C#\LeetCode\SolutionTest\obj\Debug\net9.0\refint\Solu
 C:\Users\timgi\Desktop\dev\C#\LeetCode\SolutionTest\obj\Debug\net9.0\SolutionTest.pdb
 C:\Users\timgi\Desktop\dev\C#\LeetCode\SolutionTest\obj\Debug\net9.0\SolutionTest.genruntimeconfig.cache
 C:\Users\timgi\Desktop\dev\C#\LeetCode\SolutionTest\obj\Debug\net9.0\ref\SolutionTest.dll
+C:\Users\timgi\Desktop\dev\C#\LeetCode\SolutionTest\obj\Debug\net9.0\SolutionTest.sourcelink.json
