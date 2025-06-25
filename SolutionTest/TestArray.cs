@@ -195,9 +195,21 @@ public sealed class TestArray
         Assert.AreEqual(mySolution.CountConsistentStrings("ab", ["ad", "bd", "aaab", "baa", "badab"]), 2);
         Assert.AreEqual(mySolution.CountConsistentStrings("abc", ["a", "b", "c", "ab", "ac", "bc", "abc"]), 7);
         Assert.AreEqual(mySolution.CountConsistentStrings("cad", ["cc", "acd", "b", "ba", "bac", "bad", "ac", "d"]), 4);
-        
+
         Assert.AreEqual(mySolution.CountConsistentStringsV2("ab", ["ad", "bd", "aaab", "baa", "badab"]), 2);
         Assert.AreEqual(mySolution.CountConsistentStringsV2("abc", ["a", "b", "c", "ab", "ac", "bc", "abc"]), 7);
-        Assert.AreEqual(mySolution.CountConsistentStringsV2("cad", ["cc","acd","b","ba","bac","bad","ac","d"]), 4);
+        Assert.AreEqual(mySolution.CountConsistentStringsV2("cad", ["cc", "acd", "b", "ba", "bac", "bad", "ac", "d"]), 4);
+    }
+
+    [TestMethod]
+    public void TestKidsWithCandies()
+    {
+        Solution mySolution = new Solution();
+        List<bool> expected = [true, true, true, false, true];
+        CollectionAssert.AreEqual((List<bool>)mySolution.KidsWithCandies([2, 3, 5, 1, 3], 3), expected);
+        expected = [true, false, false, false, false];
+        CollectionAssert.AreEqual((List<bool>)mySolution.KidsWithCandies([4, 2, 1, 1, 2], 1), expected);
+        expected = [true, false, true];
+        CollectionAssert.AreEqual((List<bool>)mySolution.KidsWithCandies([12, 1, 12], 10), expected);
     }
 }
