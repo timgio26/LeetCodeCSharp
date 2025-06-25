@@ -48,4 +48,12 @@ public class TestString
         StringAssert.Equals(mySolution.Interpret("G()()()()(al)"), "Gooooal");
         StringAssert.Equals(mySolution.Interpret("(al)G(al)()()G"), "alGalooG");
     }
+
+    [TestMethod]
+    public void TestMaxFreqSum()
+    {
+        SolutionString mySolution = new();
+        Assert.AreEqual(mySolution.MaxFreqSum("successes"), 6);
+        Assert.AreEqual(mySolution.MaxFreqSum("aeiaeia"), 3);
+    }
 }

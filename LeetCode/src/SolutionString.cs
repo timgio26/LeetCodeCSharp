@@ -80,11 +80,39 @@ public class SolutionString
         for (int i = 0; i < command.Length;)
         {
 
-            if (command[i] == 'G'){resultList.Add("G");i++;continue; }
+            if (command[i] == 'G') { resultList.Add("G"); i++; continue; }
             if (command[i] == '(' & command[i + 1] == 'a') { System.Console.WriteLine("al"); resultList.Add("al"); i += 4; continue; }
             if (command[i] == '(') { System.Console.WriteLine("o"); resultList.Add("o"); i += 2; continue; }
 
         }
         return string.Join("", resultList);
+    }
+
+    public int MaxFreqSum(string s)
+    {
+        Dictionary<char, int> vowels = new Dictionary<char, int>();
+        Dictionary<char, int> consonants = new Dictionary<char, int>();
+        for (int i = 0; i < s.Length; i++)
+        {
+            if ("aiueo".Contains(s[i]))
+            {
+                if (!vowels.ContainsKey(s[i])) { vowels[s[i]] = 1; continue; }
+                vowels[s[i]]++;
+                continue;
+            }
+            if (!consonants.ContainsKey(s[i])) { consonants[s[i]] = 1; continue; }
+            consonants[s[i]]++;
+        }
+        int maxCons = 0;
+        foreach (var i in consonants)
+        {
+            if (i.Value > maxCons) { maxCons = i.Value; }
+        }
+        int maxVow = 0;
+        foreach (var i in vowels)
+        {
+            if (i.Value > maxVow) { maxVow = i.Value; }
+        }
+        return maxCons + maxVow;
     }
 }
