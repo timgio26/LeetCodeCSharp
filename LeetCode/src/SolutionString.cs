@@ -1,4 +1,6 @@
 using System;
+using System.IO.Pipelines;
+using System.Text;
 
 namespace LeetCode.src;
 
@@ -90,6 +92,7 @@ public class SolutionString
 
     public int MaxFreqSum(string s)
     {
+        //3541
         Dictionary<char, int> vowels = new Dictionary<char, int>();
         Dictionary<char, int> consonants = new Dictionary<char, int>();
         for (int i = 0; i < s.Length; i++)
@@ -114,5 +117,123 @@ public class SolutionString
             if (i.Value > maxVow) { maxVow = i.Value; }
         }
         return maxCons + maxVow;
+    }
+
+    public int FindPermutationDifference(string s, string t)
+    {
+        Dictionary<char, int> sDict = new Dictionary<char, int>();
+        Dictionary<char, int> tDict = new Dictionary<char, int>();
+        for (int i = 0; i < s.Length; i++)
+        {
+            sDict[s[i]] = i;
+        }
+        int result = 0;
+        for (int i = 0; i < t.Length; i++)
+        {
+            // tDict[t[i]] = i;
+            result += Math.Abs(i - sDict[t[i]]);
+        }
+        // foreach (var item in sDict)
+        // {
+        //     result += Math.Abs(item.Value - tDict[item.Key]);
+        // }
+        return result;
+    }
+
+    public int ReverseDegree(string s)
+    {
+        //3498
+        int result = 0;
+        int i = 1;
+        foreach (char c in s)
+        {
+            result += (('a' - c + 26) * i++);
+        }
+        return result;
+
+    }
+
+    public int BalancedStringSplit(string s)
+    {
+        //1221 can be improved using int balance
+        int result = 0;
+        Dictionary<char, int> RLDict = new Dictionary<char, int>();
+        RLDict['L'] = 0;
+        RLDict['R'] = 0;
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (s[i] == 'L') { RLDict['L']++; }
+            if (s[i] == 'R') { RLDict['R']++; }
+            if (RLDict['L'] == RLDict['R']) { RLDict['L'] = 0; RLDict['R'] = 0; result++; }
+        }
+        return result;
+    }
+
+    public int MostWordsFound(string[] sentences)
+    {
+        //2114
+        int result = 0;
+        for (int i = 0; i < sentences.Length; i++)
+        {
+            if (sentences[i].Split(" ").Length > result) { result = sentences[i].Split(" ").Length; }
+        }
+        return result;
+    }
+
+    public string ReversePrefix(string word, char ch)
+    {
+        //2000 better use array method. dont need stack
+        string result = "";
+        int lastIdx = 0;
+        Stack<string> strings = new Stack<string>();
+
+        for (int i = 0; i < word.Length; i++)
+        {
+            strings.Push(word[i].ToString());
+            if (word[i] == ch) { lastIdx = i + 1; break; }
+        }
+        while (strings.Count > 0 && lastIdx != 0)
+        {
+            result += strings.Pop();
+        }
+
+        return result + word[lastIdx..];
+    }
+
+    public string TruncateSentence(string s, int k)
+    {
+        //1816
+        string[] sList = s.Split(" ");
+        return string.Join(" ", sList[..k]);
+    }
+
+    public bool ArrayStringsAreEqual(string[] word1, string[] word2)
+    {
+        //1662
+        return string.Equals(string.Join("", word1), string.Join("", word2));
+    }
+
+    public string DecodeMessage(string key, string message)
+    {
+        //2325 bisa improve pake string builder
+        Dictionary<char, char> keyDict = new();
+        char myChar = 'a';
+        foreach (char keyChar in key)
+        {
+            if (keyDict.Count == 26) { break; }
+            if (keyChar != ' ' && !keyDict.ContainsKey(keyChar))
+            {
+                keyDict[keyChar] = myChar++;
+                continue;
+            }
+
+        }
+        
+        string result = "";
+        foreach (char msgChar in message)
+        {
+            result += msgChar == ' ' ? ' ' : keyDict[msgChar];
+        }
+        return result;
     }
 }
