@@ -212,4 +212,41 @@ public sealed class TestArray
         expected = [true, false, true];
         CollectionAssert.AreEqual((List<bool>)mySolution.KidsWithCandies([12, 1, 12], 10), expected);
     }
+
+    [TestMethod]
+    public void TestLargestLocal()
+    {
+        Solution mySolution = new Solution();
+        int[][] expected = [[9, 9], [8, 6]];
+        CollectionAssert.AreEqual(expected, mySolution.LargestLocal([[9, 9, 8, 1], [5, 6, 2, 6], [8, 2, 6, 4], [6, 2, 2, 2]]));
+        expected = [[2, 2, 2], [2, 2, 2], [2, 2, 2]];
+        CollectionAssert.AreEqual(expected, mySolution.LargestLocal([[1, 1, 1, 1, 1], [1, 1, 1, 1, 1], [1, 1, 2, 1, 1], [1, 1, 1, 1, 1], [1, 1, 1, 1, 1]]));
+        // expected = [[5]];
+        // CollectionAssert.AreEqual(expected, mySolution.LargestLocal([[2,5,5],[3,2,5],[1,2,3]]));
+    }
+
+    [TestMethod]
+    public void TestDiagonalSum()
+    {
+        Solution mySolution = new Solution();
+        Assert.AreEqual(25, mySolution.DiagonalSum([[1,2,3],
+              [4,5,6],
+              [7,8,9]]));
+        Assert.AreEqual(8, mySolution.DiagonalSum([[1,1,1,1],
+              [1,1,1,1],
+              [1,1,1,1],
+              [1,1,1,1]]));
+        Assert.AreEqual(5, mySolution.DiagonalSum([[5]]));
+    }
+
+    [TestMethod]
+    public void TestFindMissingAndRepeatedValues()
+    {
+        Solution mySolution = new Solution();
+        int[] expected = [2, 4];
+        CollectionAssert.AreEqual(expected, mySolution.FindMissingAndRepeatedValues([[1, 3], [2, 2]]));
+        expected = [9, 5];
+        CollectionAssert.AreEqual(expected, mySolution.FindMissingAndRepeatedValues([[9,1,7],[8,9,2],[3,4,6]]));
+    }
+
 }

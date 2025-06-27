@@ -297,5 +297,77 @@ public class Solution
         }
         return result;
     }
+
+    public int[][] LargestLocal(int[][] grid)
+    {
+        //2373
+        int mSize = grid.Length;
+
+        int[][] result = new int[mSize - 2][];
+        for (int i = 0; i < mSize - 2; i++)
+        {
+            result[i] = new int[mSize - 2];
+        }
+
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+
+                for (int r = 0; r < result.Length; r++)
+                {
+                    for (int k = 0; k < result.Length; k++)
+                    {
+
+                        if (grid[i + r][j + k] > result[r][k]) { result[r][k] = grid[i + r][j + k]; }
+                    }
+                }
+
+
+            }
+        }
+        return result;
+
+    }
+
+    public int DiagonalSum(int[][] mat)
+    {
+        //1572
+        int right = mat.Length - 1;
+        int sum = 0;
+        for (int i = 0; i < mat.Length; i++)
+        {
+
+            if (right == i) { sum += mat[i][i]; right--; continue; }
+            sum += mat[i][i];
+            sum += mat[i][right--];
+
+        }
+        return sum;
+    }
+
+    public int[] FindMissingAndRepeatedValues(int[][] grid)
+    {
+        //2965
+        int dup = 0;
+        int miss = 0;
+        int[] numList = new int[grid.Length * grid.Length];
+        foreach (var i in grid)
+        {
+            foreach (var j in i)
+            {
+                
+                if (numList[j - 1] != 0) { dup = j; continue; }
+                numList[j - 1] = 1;
+            }
+        }
+        for (int i = 0;i<numList.Length;i++)
+        {
+            
+            if (numList[i] == 0) { miss = i + 1; break; }
+        }
+        return [dup, miss];
+        
+    }
     
 }
