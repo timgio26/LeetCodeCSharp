@@ -246,7 +246,33 @@ public sealed class TestArray
         int[] expected = [2, 4];
         CollectionAssert.AreEqual(expected, mySolution.FindMissingAndRepeatedValues([[1, 3], [2, 2]]));
         expected = [9, 5];
-        CollectionAssert.AreEqual(expected, mySolution.FindMissingAndRepeatedValues([[9,1,7],[8,9,2],[3,4,6]]));
+        CollectionAssert.AreEqual(expected, mySolution.FindMissingAndRepeatedValues([[9, 1, 7], [8, 9, 2], [3, 4, 6]]));
+    }
+
+    [TestMethod]
+    public void TestSortPeople()
+    {
+        Solution mySolution = new Solution();
+        string[] expected = ["Mary", "Emma", "John"];
+        CollectionAssert.AreEqual(expected, mySolution.SortPeople(["Mary", "John", "Emma"], [180, 165, 170]));
+        expected = ["Bob", "Alice", "Bob"];
+        CollectionAssert.AreEqual(expected, mySolution.SortPeople(["Alice", "Bob", "Bob"], [155, 185, 150]));
+    }
+
+    [TestMethod]
+    public void TestArithmeticTriplets()
+    {
+        Solution mySolution = new Solution();
+        Assert.AreEqual(2, mySolution.ArithmeticTriplets([0, 1, 4, 6, 7, 10], 3));
+        Assert.AreEqual(2, mySolution.ArithmeticTriplets([4, 5, 6, 7, 8, 9], 2));
+    }
+
+    [TestMethod]
+    public void TestNumberOfEmployeesWhoMetTarget()
+    {
+        Solution mySolution = new Solution();
+        Assert.AreEqual(3, mySolution.NumberOfEmployeesWhoMetTarget([0, 1, 2, 3, 4], 2));
+        Assert.AreEqual(0, mySolution.NumberOfEmployeesWhoMetTarget([5,1,4,2,2], 6));
     }
 
 }

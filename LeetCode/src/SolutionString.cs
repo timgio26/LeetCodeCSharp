@@ -1,5 +1,6 @@
 using System;
 using System.IO.Pipelines;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace LeetCode.src;
@@ -228,12 +229,77 @@ public class SolutionString
             }
 
         }
-        
+
         string result = "";
         foreach (char msgChar in message)
         {
             result += msgChar == ' ' ? ' ' : keyDict[msgChar];
         }
         return result;
+    }
+
+    public string RestoreString(string s, int[] indices)
+    {
+        //1528
+        string result = "";
+        for (int i = 0; i < indices.Length; i++)
+        {
+            result += s[Array.IndexOf(indices, i)];
+        }
+        return result;
+    }
+
+    public string RestoreStringV2(string s, int[] indices)
+    {
+        //1528
+        char[] result = new char[indices.Length];
+        for (int i = 0; i < indices.Length; i++)
+        {
+            result[indices[i]] = s[i];
+        }
+        return string.Join("", result);
+        // better pake new string(result)
+    }
+
+    public int CountMatches(IList<IList<string>> items, string ruleKey, string ruleValue)
+    {
+        //1773
+        int result = 0;
+        int idxFilter = ruleKey == "type" ? 0 : ruleKey == "color" ? 1 : 2;
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i][idxFilter] == ruleValue) { result++; }
+        }
+        return result;
+    }
+
+    public string RemoveOuterParentheses(string s)
+    {
+        //1021
+        string[] sComp = new string[s.Length];
+        for (int i = 0; i < s.Length; i++)
+        {
+            sComp[i] = s[i].ToString();
+        }
+        int num = 0;
+        for (int i = 0; i < sComp.Length; i++)
+        {
+            if (sComp[i] == "(") { num++; } else { num--; }
+            if (sComp[i] == "(" && num == 1) { sComp[i] = string.Empty; continue; }
+            if (sComp[i] == ")" && num == 0) { sComp[i] = string.Empty; continue; }
+        }
+        return string.Join("", sComp);
+    }
+
+    public int PrefixCount(string[] words, string pref)
+    {
+        int count = 0;
+
+        for (int i = 0; i < words.Length; i++)
+        {
+            int limit = pref.Length > words[i].Length ? words[i].Length : pref.Length; 
+            if (string.Equals(pref, words[i][..limit])) { count++; }
+        }
+        return count;
     }
 }

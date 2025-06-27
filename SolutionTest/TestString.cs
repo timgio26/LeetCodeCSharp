@@ -127,4 +127,39 @@ public class TestString
         Assert.AreEqual("this is a secret", mySolution.DecodeMessage("the quick brown fox jumps over the lazy dog", "vkbs bs t suepuv"));
         Assert.AreEqual("the five boxing wizards jump quickly", mySolution.DecodeMessage("eljuxhpwnyrdgtqkviszcfmabo", "zwx hnfx lqantp mnoeius ycgk vcnjrdb"));
     }
+
+    [TestMethod]
+    public void TestRestoreString()
+    {
+        SolutionString mySolution = new();
+        Assert.AreEqual("leetcode", mySolution.RestoreString("codeleet", [4, 5, 6, 7, 0, 2, 1, 3]));
+        Assert.AreEqual("abc", mySolution.RestoreString("abc", [0, 1, 2]));
+        Assert.AreEqual("leetcode", mySolution.RestoreStringV2("codeleet", [4, 5, 6, 7, 0, 2, 1, 3]));
+        Assert.AreEqual("abc", mySolution.RestoreStringV2("abc", [0, 1, 2]));
+    }
+
+    [TestMethod]
+    public void TestCountMatches()
+    {
+        SolutionString mySolution = new();
+        Assert.AreEqual(2, mySolution.CountMatches([["phone", "blue", "pixel"], ["computer", "silver", "phone"], ["phone", "gold", "iphone"]], "type", "phone"));
+        Assert.AreEqual(1, mySolution.CountMatches([["phone", "blue", "pixel"], ["computer", "silver", "lenovo"], ["phone", "gold", "iphone"]], "color", "silver"));
+    }
+
+    [TestMethod]
+    public void TestRemoveOuterParentheses()
+    {
+        SolutionString mySolution = new();
+        Assert.AreEqual("()()()", mySolution.RemoveOuterParentheses("(()())(())"));
+        Assert.AreEqual("()()()()(())", mySolution.RemoveOuterParentheses("(()())(())(()(()))"));
+        Assert.AreEqual("", mySolution.RemoveOuterParentheses("()()"));
+    }
+
+    [TestMethod]
+    public void TestPrefixCount()
+    {
+        SolutionString mySolution = new();
+        Assert.AreEqual(2, mySolution.PrefixCount(["pay", "attention", "practice", "attend"], "at"));
+        Assert.AreEqual(0, mySolution.PrefixCount(["leetcode","win","loops","success"],"code"));
+    }
 }

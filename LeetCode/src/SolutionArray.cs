@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.IO.Pipelines;
 using System.Runtime.InteropServices;
 using Microsoft.VisualBasic;
 
@@ -356,18 +357,59 @@ public class Solution
         {
             foreach (var j in i)
             {
-                
+
                 if (numList[j - 1] != 0) { dup = j; continue; }
                 numList[j - 1] = 1;
             }
         }
-        for (int i = 0;i<numList.Length;i++)
+        for (int i = 0; i < numList.Length; i++)
         {
-            
+
             if (numList[i] == 0) { miss = i + 1; break; }
         }
         return [dup, miss];
-        
+
+    }
+
+    public string[] SortPeople(string[] names, int[] heights)
+    {
+        //2418
+        Dictionary<int, string> namesHeight = new Dictionary<int, string>();
+        for (int i = 0; i < names.Length; i++)
+        {
+            namesHeight[heights[i]] = names[i];
+        }
+
+        string[] result = new string[names.Length];
+        Array.Sort(heights);
+
+        for (int i = names.Length - 1, j = 0; i >= 0; i--, j++)
+        {
+            result[j] = namesHeight[heights[i]];
+        }
+        return result;
+    }
+
+    public int ArithmeticTriplets(int[] nums, int diff)
+    {
+        //2367
+        int count = 0;
+        for (int i = 0; i <= nums.Length - 1; i++)
+        {
+            if (nums.Contains(nums[i] + diff) & nums.Contains(nums[i] + (2 * diff))) { count++; }
+        }
+        return count;
+    }
+
+    public int NumberOfEmployeesWhoMetTarget(int[] hours, int target)
+    {
+        //2798
+        int count = 0;
+        foreach (var h in hours)
+        {
+            if (h >= target) count++;
+        }
+        return count;
     }
     
 }

@@ -9,7 +9,7 @@ var mySolution = new Solution();
 
 // System.Console.WriteLine(Convert.ToString(2,2));
 
-// SolutionString mySolutionStr = new();
+SolutionString mySolutionStr = new();
 // mySolutionStr.Interpret("(al)G(al)()()G");
 // System.Console.WriteLine(mySolution.CountConsistentStrings("ab", ["ad", "bd", "aaab", "baa", "badab"]));
 // System.Console.WriteLine('a' - 'b'+26);
@@ -37,7 +37,10 @@ var mySolution = new Solution();
 //         System.Console.WriteLine(col);
 //     }
 // }
-foreach (var i in mySolution.FindMissingAndRepeatedValues([[9,1,7],[8,9,2],[3,4,6]]))
-{
-    System.Console.WriteLine(i);
-}
+// foreach (var i in mySolution.FindMissingAndRepeatedValues([[9,1,7],[8,9,2],[3,4,6]]))
+// {
+//     System.Console.WriteLine(i);
+// }
+// mySolutionStr.PrefixCount(["leetcode", "win", "loops", "success"], "code");
+int[] nums = [0, 1, 4, 6, 7, 10];
+System.Console.WriteLine(nums.Contains(4));
