@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using System.IO.Pipelines;
+using System.Net;
 using System.Runtime.InteropServices;
 using Microsoft.VisualBasic;
 
@@ -411,5 +412,99 @@ public class Solution
         }
         return count;
     }
+
+    public int CountPairs(IList<int> nums, int target)
+    {
+        //2824
+        int result = 0;
+        for (int i = 0; i < nums.Count - 1; i++)
+        {
+            int right = nums.Count - 1;
+            while (i < right)
+            {
+                if (nums[i] + nums[right] < target) { result++; }
+                right--;
+            }
+        }
+        return result;
+    }
+
+    public int[] LeftRightDifference(int[] nums)
+    {
+        //2574
+
+        int[] result = new int[nums.Length];
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+
+            result[i] = Math.Abs(nums[..i].Sum() - nums[(i + 1)..].Sum());
+
+        }
+
+        return result;
+    }
+
+    public int[] SmallerNumbersThanCurrent(int[] nums)
+    {
+        //1365
+        int[] result = new int[nums.Length];
+        for (int i = 0; i < nums.Length; i++)
+        {
+            for (int j = 0; j < nums.Length; j++)
+            {
+                if (i == j) { continue; }
+                if (nums[i] > nums[j]) { result[i]++; }
+            }
+        }
+        return result;
+    }
+
+    public int MinMovesToSeat(int[] seats, int[] students)
+    {
+        //2037
+        Array.Sort(seats);
+        Array.Sort(students);
+        int count = 0;
+        for (int i = 0; i < seats.Length; i++)
+        {
+            count += Math.Abs(seats[i] - students[i]);
+        }
+        return count;
+    }
+
+    public int[] MinOperations(string boxes)
+    {
+        //1769
+        int[] result = new int[boxes.Length];
+        for (int i = 0; i < boxes.Length; i++)
+        {
+            int count = 0;
+            for (int j = 0; j < boxes.Length; j++)
+            {
+                if (boxes[j] == '1') { count += Math.Abs(j - i); }
+                if (j == boxes.Length - 1) { result[i] = count; }
+            }
+        }
+        return result;
+    }
+
+    public int MaxWidthOfVerticalArea(int[][] points)
+    {
+        //1637
+        int max = 0;
+        List<int> widths = [];
+        foreach (var i in points)
+        {
+            widths.Add(i[0]);
+        }
+        widths.Sort();
+        for (int i = 0; i < widths.Count - 1; i++)
+        {
+            if (widths[i + 1] - widths[i] > max) { max = widths[i + 1] - widths[i]; }
+        }
+        return max;
+    }
+
     
 }

@@ -272,7 +272,65 @@ public sealed class TestArray
     {
         Solution mySolution = new Solution();
         Assert.AreEqual(3, mySolution.NumberOfEmployeesWhoMetTarget([0, 1, 2, 3, 4], 2));
-        Assert.AreEqual(0, mySolution.NumberOfEmployeesWhoMetTarget([5,1,4,2,2], 6));
+        Assert.AreEqual(0, mySolution.NumberOfEmployeesWhoMetTarget([5, 1, 4, 2, 2], 6));
+    }
+
+    [TestMethod]
+    public void TestCountPairs()
+    {
+        Solution mySolution = new Solution();
+        Assert.AreEqual(3, mySolution.CountPairs([-1, 1, 2, 3, 1], 2));
+        Assert.AreEqual(10, mySolution.CountPairs([-6, 2, 5, -2, -7, -1, 3], -2));
+    }
+
+    [TestMethod]
+
+    public void TestLeftRightDifference()
+    {
+        Solution mySolution = new Solution();
+        int[] expected = [15, 1, 11, 22];
+        CollectionAssert.AreEqual(expected, mySolution.LeftRightDifference([10, 4, 8, 3]));
+        expected = [0];
+        CollectionAssert.AreEqual(expected, mySolution.LeftRightDifference([1]));
+    }
+
+    [TestMethod]
+    public void TestSmallerNumbersThanCurrent()
+    {
+        Solution mySolution = new Solution();
+        int[] expected = [4, 0, 1, 1, 3];
+        CollectionAssert.AreEqual(expected, mySolution.SmallerNumbersThanCurrent([8, 1, 2, 2, 3]));
+        expected = [2, 1, 0, 3];
+        CollectionAssert.AreEqual(expected, mySolution.SmallerNumbersThanCurrent([6, 5, 4, 8]));
+        expected = [0, 0, 0, 0];
+        CollectionAssert.AreEqual(expected, mySolution.SmallerNumbersThanCurrent([7, 7, 7, 7]));
+    }
+
+    [TestMethod]
+    public void TestMinMovesToSeat()
+    {
+        Solution mySolution = new Solution();
+        Assert.AreEqual(4, mySolution.MinMovesToSeat([3, 1, 5], [2, 7, 4]));
+        Assert.AreEqual(7, mySolution.MinMovesToSeat([4, 1, 5, 9], [1, 3, 2, 6]));
+        Assert.AreEqual(4, mySolution.MinMovesToSeat([2, 2, 6, 6], [1, 3, 2, 6]));
+    }
+
+    [TestMethod]
+    public void TestMinOperations()
+    {
+        Solution mySolution = new Solution();
+        int[] expect = [1, 1, 3];
+        CollectionAssert.AreEqual(expect, mySolution.MinOperations("110"));
+        expect = [11, 8, 5, 4, 3, 4];
+        CollectionAssert.AreEqual(expect, mySolution.MinOperations("001011"));
+    }
+
+    [TestMethod]
+    public void TestMaxWidthOfVerticalArea()
+    {
+        Solution mySolution = new Solution();
+        Assert.AreEqual(1, mySolution.MaxWidthOfVerticalArea([[8, 7], [9, 9], [7, 4], [9, 7]]));
+        Assert.AreEqual(3, mySolution.MaxWidthOfVerticalArea([[3, 1], [9, 0], [1, 0], [1, 4], [5, 3], [8, 8]]));
     }
 
 }

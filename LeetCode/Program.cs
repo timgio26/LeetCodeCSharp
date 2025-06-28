@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System.Runtime.CompilerServices;
 using LeetCode.src;
 
 var mySolution = new Solution();
@@ -42,5 +43,16 @@ SolutionString mySolutionStr = new();
 //     System.Console.WriteLine(i);
 // }
 // mySolutionStr.PrefixCount(["leetcode", "win", "loops", "success"], "code");
-int[] nums = [0, 1, 4, 6, 7, 10];
-System.Console.WriteLine(nums.Contains(4));
+// int[] nums = [1,1,1,1,1];
+// System.Console.WriteLine(nums[..0].Sum());
+// int[] leftSum = new int[nums.Length];
+// foreach (var col in leftSum)
+// {
+//     System.Console.WriteLine(col);
+// }
+// mySolution.LeftRightDifference([10, 4, 8, 3]);
+foreach (var i in mySolution.MinOperations("110"))
+{
+    System.Console.WriteLine(i);
+}
+
