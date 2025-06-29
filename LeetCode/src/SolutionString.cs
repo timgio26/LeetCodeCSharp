@@ -297,9 +297,60 @@ public class SolutionString
 
         for (int i = 0; i < words.Length; i++)
         {
-            int limit = pref.Length > words[i].Length ? words[i].Length : pref.Length; 
+            int limit = pref.Length > words[i].Length ? words[i].Length : pref.Length;
             if (string.Equals(pref, words[i][..limit])) { count++; }
         }
         return count;
+    }
+
+    public int MaxDepth(string s)
+    {
+        //1614
+        int max = 0;
+        int count = 0;
+        foreach (char i in s)
+        {
+            if (i == '(') { count++; }
+            if (i == ')') { count--; }
+            if (count > max) { max = count; }
+        }
+        return max;
+    }
+
+    public string FirstPalindrome(string[] words)
+    {
+        //2108
+        foreach (string i in words)
+        {
+            int left = 0;
+            int right = i.Length - 1;
+            while (left <= right)
+            {
+                if (i[left++] != i[right--]) { break; }
+                if (left == right || left > right) { return i; }
+            }
+        }
+        return "";
+    }
+
+    public string ReverseWords(string s)
+    {
+        //557
+        string[] words = s.Split(' ');
+        for (int i = 0; i < words.Length; i++)
+        {
+            char[] letters = words[i].ToCharArray();
+            int left = 0;
+            int right = letters.Length - 1;
+            while (left < right)
+            {
+                char temp = letters[right];
+                letters[right--] = letters[left];
+                letters[left++] = temp;
+                // left++; right--;
+            }
+            words[i] = string.Join(string.Empty, letters);
+        }
+        return string.Join(' ', words);
     }
 }

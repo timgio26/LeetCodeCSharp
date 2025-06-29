@@ -160,6 +160,34 @@ public class TestString
     {
         SolutionString mySolution = new();
         Assert.AreEqual(2, mySolution.PrefixCount(["pay", "attention", "practice", "attend"], "at"));
-        Assert.AreEqual(0, mySolution.PrefixCount(["leetcode","win","loops","success"],"code"));
+        Assert.AreEqual(0, mySolution.PrefixCount(["leetcode", "win", "loops", "success"], "code"));
+    }
+
+    [TestMethod]
+    public void TestMaxDepth()
+    {
+        SolutionString mySolution = new();
+        Assert.AreEqual(3, mySolution.MaxDepth("(1+(2*3)+((8)/4))+1"));
+        Assert.AreEqual(3, mySolution.MaxDepth("(1)+((2))+(((3)))"));
+        Assert.AreEqual(3, mySolution.MaxDepth("()(())((()()))"));
+
+    }
+
+    [TestMethod]
+    public void TestFirstPalindrome()
+    {
+        SolutionString mySolution = new();
+        Assert.AreEqual("ada", mySolution.FirstPalindrome(["abc", "car", "ada", "racecar", "cool"]));
+        Assert.AreEqual("racecar", mySolution.FirstPalindrome(["notapalindrome", "racecar"]));
+        Assert.AreEqual("", mySolution.FirstPalindrome(["def", "ghi"]));
+        Assert.AreEqual("e", mySolution.FirstPalindrome(["xngla", "e", "itrn", "y", "s", "pfp", "rfd"]));
+    }
+
+    [TestMethod]
+    public void TestReverseWords()
+    {
+        SolutionString mySolution = new();
+        Assert.AreEqual("s'teL ekat edoCteeL tsetnoc", mySolution.ReverseWords("Let's take LeetCode contest"));
+        Assert.AreEqual("rM gniD", mySolution.ReverseWords("Mr Ding"));
     }
 }

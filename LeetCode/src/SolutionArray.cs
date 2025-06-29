@@ -506,5 +506,98 @@ public class Solution
         return max;
     }
 
+    public double MinimumAverage(int[] nums)
+    {
+        //3194
+        double min = double.MaxValue;
+        Array.Sort(nums);
+        int left = 0;
+        int right = nums.Length - 1;
+        while (left < right)
+        {
+            double avg = (double)(nums[left] + nums[right]) / 2;
+            if (avg < min) { min = avg; }
+            left++; right--;
+
+        }
+        return min;
+    }
+
+    public int[] RunningSum(int[] nums)
+    {
+        //1480
+        int[] result = new int[nums.Length];
+        int count = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            count += nums[i];
+            result[i] = count;
+        }
+        return result;
+    }
+
+    public IList<int> StableMountains(int[] height, int threshold)
+    {
+        //3285
+        List<int> result = [];
+        for (int i = 1; i < height.Length; i++)
+        {
+            if (height[i - 1] > threshold) { result.Add(i); }
+        }
+        return result;
+    }
+
+    public int MaxProduct(int[] nums)
+    {
+        //1464
+        Array.Sort(nums);
+        return (nums[nums.Length - 1] - 1) * (nums[nums.Length - 2] - 1);
+    }
+
+    public int CountPairs2176(int[] nums, int k)
+    {
+        //2176
+        int count = 0;
+        for (int i = 0; i < nums.Length - 1; i++)
+        {
+            for (int j = i + 1; j < nums.Length; j++)
+            {
+                int product = i * j;
+                if (nums[i] == nums[j] && product % k == 0) { count++; }
+            }
+        }
+        return count;
+    }
+
+    public int SubarraySum(int[] nums)
+    {
+        //3427
+        int result = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            int start = i - nums[i] > 0 ? i - nums[i] : 0;
+            // result += nums[start..(i + 1)].Sum();
+            int sum = 0;
+            for (int j = start; j < i + 1; j++)
+            {
+                sum += nums[j];
+            }
+            result += sum;
+
+        }
+        return result;
+    }
+
+    public int[] MinCosts(int[] cost)
+    {
+        //3502
+        int minCost = int.MaxValue;
+        for (int i = 0; i < cost.Length; i++)
+        {
+            if (cost[i] > minCost) { cost[i] = minCost; continue; }
+            minCost = cost[i];
+        }
+        return cost;
+    }
     
 }

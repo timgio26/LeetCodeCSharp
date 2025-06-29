@@ -333,4 +333,61 @@ public sealed class TestArray
         Assert.AreEqual(3, mySolution.MaxWidthOfVerticalArea([[3, 1], [9, 0], [1, 0], [1, 4], [5, 3], [8, 8]]));
     }
 
+    [TestMethod]
+    public void TestMinimumAverage()
+    {
+        Solution mySolution = new Solution();
+        Assert.AreEqual(5.5, mySolution.MinimumAverage([7, 8, 3, 4, 15, 13, 4, 1]));
+        Assert.AreEqual(5.5, mySolution.MinimumAverage([1, 9, 8, 3, 10, 5]));
+        Assert.AreEqual(5.0, mySolution.MinimumAverage([1, 2, 3, 7, 8, 9]));
+    }
+
+    [TestMethod]
+    public void TestRunningSum()
+    {
+        Solution mySolution = new();
+        int[] expected = [1, 3, 6, 10];
+        CollectionAssert.AreEqual(expected, mySolution.RunningSum([1, 2, 3, 4]));
+        expected = [1, 2, 3, 4, 5];
+        CollectionAssert.AreEqual(expected, mySolution.RunningSum([1, 1, 1, 1, 1]));
+    }
+
+    [TestMethod]
+    public void TestStableMountains()
+    {
+        Solution mySolution = new();
+        List<int> expected = [3, 4];
+        CollectionAssert.AreEqual(expected, (List<int>)mySolution.StableMountains([1, 2, 3, 4, 5], 2));
+        expected = [1, 3];
+        CollectionAssert.AreEqual(expected, (List<int>)mySolution.StableMountains([10, 1, 10, 1, 10], 3));
+        expected = [];
+        CollectionAssert.AreEqual(expected, (List<int>)mySolution.StableMountains([10, 1, 10, 1, 10], 10));
+    }
+
+    [TestMethod]
+    public void TestCountPairs2176()
+    {
+        Solution mySolution = new();
+        Assert.AreEqual(4, mySolution.CountPairs2176([3, 1, 2, 2, 2, 1, 3], 2));
+        Assert.AreEqual(0, mySolution.CountPairs2176([1, 2, 3, 4], 1));
+    }
+
+    [TestMethod]
+    public void TestSubarraySum()
+    {
+        Solution mySolution = new();
+        Assert.AreEqual(11, mySolution.SubarraySum([2, 3, 1]));
+        Assert.AreEqual(13, mySolution.SubarraySum([3, 1, 1, 2]));
+    }
+
+    [TestMethod]
+    public void TestMinCosts()
+    {
+        Solution mySolution = new();
+        int[] expected = [5, 3, 3, 1, 1, 1];
+        CollectionAssert.AreEqual(expected, mySolution.MinCosts([5, 3, 4, 1, 3, 2]));
+        expected = [1,1,1,1,1];
+        CollectionAssert.AreEqual(expected, mySolution.MinCosts([1,2,4,6,7]));
+
+    }
 }
