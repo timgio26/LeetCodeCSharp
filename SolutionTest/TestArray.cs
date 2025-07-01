@@ -386,8 +386,20 @@ public sealed class TestArray
         Solution mySolution = new();
         int[] expected = [5, 3, 3, 1, 1, 1];
         CollectionAssert.AreEqual(expected, mySolution.MinCosts([5, 3, 4, 1, 3, 2]));
-        expected = [1,1,1,1,1];
-        CollectionAssert.AreEqual(expected, mySolution.MinCosts([1,2,4,6,7]));
+        expected = [1, 1, 1, 1, 1];
+        CollectionAssert.AreEqual(expected, mySolution.MinCosts([1, 2, 4, 6, 7]));
 
+    }
+
+    [TestMethod]
+    public void TestLuckyNumbers()
+    {
+        Solution mySolution = new();
+        int[] expected = [15];
+        CollectionAssert.AreEqual(expected, (List<int>)mySolution.LuckyNumbers([[3, 7, 8], [9, 11, 13], [15, 16, 17]]));
+        expected = [12];
+        CollectionAssert.AreEqual(expected, (List<int>)mySolution.LuckyNumbers([[1, 10, 4, 2], [9, 3, 8, 7], [15, 16, 17, 12]]));
+        expected = [7];
+        CollectionAssert.AreEqual(expected, (List<int>)mySolution.LuckyNumbers([[7,8],[1,2]]));
     }
 }

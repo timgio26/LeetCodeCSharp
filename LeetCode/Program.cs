@@ -1,5 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using System.Runtime.CompilerServices;
 using LeetCode.src;
-SolutionMath mySolution = new();
-mySolution.MinimumSum(2932);
+
+Solution mySolution = new();
+
+foreach (int i in mySolution.LuckyNumbers([[1, 10, 4, 2], [9, 3, 8, 7], [15, 16, 17, 12]]))
+{
+    System.Console.WriteLine(i);
+}

@@ -599,5 +599,34 @@ public class Solution
         }
         return cost;
     }
+
+    public IList<int> LuckyNumbers(int[][] matrix)
+    {
+        //1380
+        List<int> result = [];
+        int matrixRow = matrix.Length;
+        int matrixCol = matrix[0].Length;
+        for (int i = 0; i < matrixRow; i++)
+        {
+            for (int j = 0; j < matrixCol; j++)
+            {
+                int numFocus = matrix[i][j];
+                bool colCheck = false, rowCheck = false;
+                for (int col = 0; col < matrixCol; col++)//col
+                {
+                    if (numFocus > matrix[i][col]) { break; }
+                    if (col == matrixCol - 1) { colCheck = true; }
+                }
+                for (int row = 0; row < matrixRow; row++)//col
+                {
+                    if (numFocus < matrix[row][j]) { break; }
+                    if (row == matrixRow - 1) { rowCheck = true; }
+                }
+                if (rowCheck && colCheck) { result.Add(numFocus); }
+
+            }
+        }
+        return result;
+    }
     
 }
