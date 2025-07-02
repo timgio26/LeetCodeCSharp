@@ -4,7 +4,7 @@ using LeetCode.src;
 
 Solution mySolution = new();
 
-foreach (int i in mySolution.LuckyNumbers([[1, 10, 4, 2], [9, 3, 8, 7], [15, 16, 17, 12]]))
+foreach (int i in mySolution.NumberGame([2,5]))
 {
     System.Console.WriteLine(i);
 }

@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.IO.Pipelines;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -627,6 +628,43 @@ public class Solution
             }
         }
         return result;
+    }
+
+    public int MinOperations1827(int[] nums)
+    {
+        //1827
+        int result = 0, curVal = 0;
+        foreach (int num in nums)
+        {
+            if (num <= curVal) { result += curVal - num + 1; curVal += 1; continue; }
+            curVal = num;
+        }
+        return result;
+    }
+
+    public int[] NumberGame(int[] nums)
+    {
+        //2974
+        int[] result = new int[nums.Length];
+        Array.Sort(nums);
+        for (int i = 0; i < nums.Length; i += 2)
+        {
+            result[i] = nums[i + 1];
+            result[i + 1] = nums[i];
+        }
+        return result;
+    }
+
+    public int LargestAltitude(int[] gain)
+    {
+        //1732
+        int max = 0, curAlt = 0;
+        foreach (int i in gain)
+        {
+            curAlt += i;
+            if (curAlt > max) { max = curAlt; }
+        }
+        return max;
     }
     
 }

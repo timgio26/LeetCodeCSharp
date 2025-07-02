@@ -400,6 +400,33 @@ public sealed class TestArray
         expected = [12];
         CollectionAssert.AreEqual(expected, (List<int>)mySolution.LuckyNumbers([[1, 10, 4, 2], [9, 3, 8, 7], [15, 16, 17, 12]]));
         expected = [7];
-        CollectionAssert.AreEqual(expected, (List<int>)mySolution.LuckyNumbers([[7,8],[1,2]]));
+        CollectionAssert.AreEqual(expected, (List<int>)mySolution.LuckyNumbers([[7, 8], [1, 2]]));
+    }
+
+    [TestMethod]
+    public void TestMinOperations1827()
+    {
+        Solution mySolution = new();
+        Assert.AreEqual(3, mySolution.MinOperations1827([1, 1, 1]));
+        Assert.AreEqual(14, mySolution.MinOperations1827([1, 5, 2, 4, 1]));
+        Assert.AreEqual(0, mySolution.MinOperations1827([8]));
+    }
+
+    [TestMethod]
+    public void TestNumberGame()
+    {
+        Solution mySolution = new();
+        int[] expect = [3, 2, 5, 4];
+        CollectionAssert.AreEqual(expect, mySolution.NumberGame([5, 4, 2, 3]));
+        expect = [5, 2];
+        CollectionAssert.AreEqual(expect, mySolution.NumberGame([2, 5]));
+    }
+
+    [TestMethod]
+    public void TestLargestAltitude()
+    {
+        Solution mySolution = new();
+        Assert.AreEqual(1, mySolution.LargestAltitude([-5, 1, 5, 0, -7]));
+        Assert.AreEqual(0, mySolution.LargestAltitude([-4,-3,-2,-1,4,3,2]));
     }
 }
