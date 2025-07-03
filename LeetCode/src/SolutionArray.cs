@@ -698,5 +698,13 @@ public class Solution
         }
         return count;
     }
+
+    public int MaxProductDifference(int[] nums)
+    {
+        //1913
+        Array.Sort(nums);
+        int len = nums.Length;
+        return (nums[len - 1] * nums[len - 2]) - (nums[0] * nums[1]);
+    }
     
 }
