@@ -666,5 +666,37 @@ public class Solution
         }
         return max;
     }
+
+    public int CountNegatives(int[][] grid)
+    {
+        //1351 can be improved with binary search
+        int count = 0;
+        for (int i = 0; i < grid.Length; i++)
+        {
+            for (int j = 0; j < grid[i].Length; j++)
+            {
+                if (grid[i][j] < 0) { count++; }
+            }
+        }
+        return count;
+    }
+
+    public int HeightChecker(int[] heights)
+    {
+        //1051
+        int count = 0;
+
+        int[] expected = new int[heights.Length];
+        for (int i = 0; i < expected.Length; i++)
+        {
+            expected[i] = heights[i];
+        }
+        Array.Sort(expected);
+        for (int i = 0; i < expected.Length; i++)
+        {
+            if (expected[i] != heights[i]) { count++; }
+        }
+        return count;
+    }
     
 }

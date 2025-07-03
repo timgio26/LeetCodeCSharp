@@ -77,6 +77,54 @@ public class SolutionMath
     }
 
 
+    public int MinTimeToVisitAllPoints(int[][] points)
+    {
+        //1266
+        int count = 0;
+        int startX = points[0][0];
+        int startY = points[0][1];
+        for (int i = 1; i < points.Length && points.Length > 1; i++)
+        {
+            if (Math.Abs(points[i][0] - startX) > Math.Abs(points[i][1] - startY))
+            {
+                count += Math.Abs(points[i][0] - startX);
+            }
+            else
+            {
+                count += Math.Abs(points[i][1] - startY);
+            }
+            startX = points[i][0]; startY = points[i][1];
+
+        }
+        return count;
+    }
+
+    public int ProjectionArea(int[][] grid)
+    {
+        //883
+        int count = 0;
+        // int countFront = 0;
+        int[] countSide = new int[grid.Length];
+        for (int i = 0; i < grid.Length; i++)
+        {
+            int maxHeight = 0;
+            for (int j = 0; j < grid[i].Length; j++)
+            {
+                if (grid[i][j] > 0) { count++; }
+                if (grid[i][j] > maxHeight) { maxHeight = grid[i][j]; }
+                if (grid[i][j] > countSide[j]) { countSide[j] = grid[i][j]; }
+            }
+            count += maxHeight;
+        }
+        int countSideSum = 0;
+        foreach (int i in countSide)
+        {
+            countSideSum += i;
+        }
+        return count + countSideSum;
+    }
+
+
 
     
 }

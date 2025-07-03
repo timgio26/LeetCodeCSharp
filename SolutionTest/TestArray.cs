@@ -427,6 +427,14 @@ public sealed class TestArray
     {
         Solution mySolution = new();
         Assert.AreEqual(1, mySolution.LargestAltitude([-5, 1, 5, 0, -7]));
-        Assert.AreEqual(0, mySolution.LargestAltitude([-4,-3,-2,-1,4,3,2]));
+        Assert.AreEqual(0, mySolution.LargestAltitude([-4, -3, -2, -1, 4, 3, 2]));
+    }
+
+    [TestMethod]
+    public void TestCountNegatives()
+    {
+        Solution mySolution = new();
+        Assert.AreEqual(8, mySolution.CountNegatives([[4, 3, 2, -1], [3, 2, 1, -1], [1, 1, -1, -2], [-1, -1, -2, -3]]));
+        Assert.AreEqual(0, mySolution.CountNegatives([[3,2],[1,0]]));
     }
 }
