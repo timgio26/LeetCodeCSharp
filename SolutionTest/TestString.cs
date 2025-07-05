@@ -190,4 +190,12 @@ public class TestString
         Assert.AreEqual("s'teL ekat edoCteeL tsetnoc", mySolution.ReverseWords("Let's take LeetCode contest"));
         Assert.AreEqual("rM gniD", mySolution.ReverseWords("Mr Ding"));
     }
+
+    [TestMethod]
+    public void TestCountSeniors()
+    {
+        SolutionString mySolution = new();
+        Assert.AreEqual(2, mySolution.CountSeniors(["7868190130M7522", "5303914400F9211", "9273338290F4010"]));
+        Assert.AreEqual(0, mySolution.CountSeniors(["1313579440F2036","2921522980M5644"]));
+    }
 }

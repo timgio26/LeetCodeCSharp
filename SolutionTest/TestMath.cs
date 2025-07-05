@@ -68,4 +68,22 @@ public class TestMath
         Assert.AreEqual(5, mySolution.ProjectionArea([[2]]));
         Assert.AreEqual(8, mySolution.ProjectionArea([[1, 0], [0, 2]]));
     }
+
+    [TestMethod]
+    public void TestMaximum69Number()
+    {
+        SolutionMath mySolution = new();
+        Assert.AreEqual(9969, mySolution.Maximum69Number(9669));
+        Assert.AreEqual(9999, mySolution.Maximum69Number(9996));
+        Assert.AreEqual(9999, mySolution.Maximum69Number(9999));
+    }
+
+    [TestMethod]
+    public void TestSumOddLengthSubarrays()
+    {
+        SolutionMath mySolution = new();
+        Assert.AreEqual(3, mySolution.SumOddLengthSubarrays([1, 2]));
+        Assert.AreEqual(58, mySolution.SumOddLengthSubarrays([1, 4, 2, 5, 3]));
+        Assert.AreEqual(66, mySolution.SumOddLengthSubarrays([10,11,12]));
+    }
 }

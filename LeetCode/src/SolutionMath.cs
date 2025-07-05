@@ -124,7 +124,57 @@ public class SolutionMath
         return count + countSideSum;
     }
 
+    public int Maximum69Number(int num)
+    {
+        //1323
+        int[] numsDigits = new int[num.ToString().Length];
+        int len = numsDigits.Length;
+        int result = 0;
+        for (int i = len - 1; i >= 0; i--)
+        {
+            numsDigits[i] = num % 10;
+            num /= 10;
+        }
+        for (int i = 0; i < len; i++)
+        {
+            if (numsDigits[i] == 6)
+            {
+                numsDigits[i] = 9;
+                break;
+            }
+        }
+        int pengali = 1;
+        for (int i = len - 1; i >= 0; i--)
+        {
+            result += numsDigits[i] * pengali;
+            pengali *= 10;
+        }
+        return result;
+    }
 
+    public int SumOddLengthSubarrays(int[] arr)
+    {
+        //1588 can be improved
+        int sum = 0;
+        int len = arr.Length;
+        for (int i = 1; i <= len; i += 2)
+        {
+            for (int j = 0; j <= len - i; j++)
+            {
+                int[] tempArr = new int[i];
+                int tempArrLen = tempArr.Length;
+                tempArr[0] = arr[j];
+                for (int k = 1; k < tempArrLen; k++)
+                {
+                    tempArr[k] = arr[k + j] + tempArr[k- 1];
+                }
+
+                sum += tempArr[tempArrLen - 1];
+
+            }
+        }
+        return sum;
+    }
 
     
 }

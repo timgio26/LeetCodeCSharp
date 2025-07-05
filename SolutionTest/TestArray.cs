@@ -1,4 +1,5 @@
-﻿using LeetCode.src;
+﻿using System.Collections.ObjectModel;
+using LeetCode.src;
 
 namespace SolutionTest;
 
@@ -435,6 +436,39 @@ public sealed class TestArray
     {
         Solution mySolution = new();
         Assert.AreEqual(8, mySolution.CountNegatives([[4, 3, 2, -1], [3, 2, 1, -1], [1, 1, -1, -2], [-1, -1, -2, -3]]));
-        Assert.AreEqual(0, mySolution.CountNegatives([[3,2],[1,0]]));
+        Assert.AreEqual(0, mySolution.CountNegatives([[3, 2], [1, 0]]));
+    }
+
+    [TestMethod]
+    public void TestCreateTargetArray()
+    {
+        Solution mySolution = new();
+        int[] expect = [0, 4, 1, 3, 2];
+        CollectionAssert.AreEqual(expect, mySolution.CreateTargetArray([0, 1, 2, 3, 4], [0, 1, 2, 2, 1]));
+        expect = [0, 1, 2, 3, 4];
+        CollectionAssert.AreEqual(expect, mySolution.CreateTargetArray([1, 2, 3, 4, 0], [0, 1, 2, 3, 0]));
+    }
+
+    [TestMethod]
+    public void TestFinalPrices()
+    {
+        Solution mySolution = new();
+        int[] expect = [4, 2, 4, 2, 3];
+        CollectionAssert.AreEqual(expect, mySolution.FinalPrices([8, 4, 6, 2, 3]));
+        expect = [1, 2, 3, 4, 5];
+        CollectionAssert.AreEqual(expect, mySolution.FinalPrices([1, 2, 3, 4, 5]));
+        expect = [9, 0, 1, 6];
+        CollectionAssert.AreEqual(expect, mySolution.FinalPrices([10, 1, 1, 6]));
+
+    }
+
+    [TestMethod]
+    public void TestPivotArray()
+    {
+        Solution mySolution = new();
+        int[] expect = [9, 5, 3, 10, 10, 12, 14];
+        CollectionAssert.AreEqual(expect, mySolution.PivotArray([9, 12, 5, 10, 14, 3, 10], 10));
+        expect = [-3,2,4,3];
+        CollectionAssert.AreEqual(expect, mySolution.PivotArray([-3,4,3,2],2));
     }
 }

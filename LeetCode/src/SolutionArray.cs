@@ -706,5 +706,45 @@ public class Solution
         int len = nums.Length;
         return (nums[len - 1] * nums[len - 2]) - (nums[0] * nums[1]);
     }
+
+    public int[] CreateTargetArray(int[] nums, int[] index)
+    {
+        //1389
+        List<int> result = new List<int>(nums.Length);
+        for (int i = 0; i < nums.Length; i++)
+        {
+            result.Insert(index[i], nums[i]);
+        }
+        return result.ToArray();
+    }
+
+    public int[] FinalPrices(int[] prices)
+    {
+        //1475
+        for (int i = 0; i < prices.Length; i++)
+        {
+            for (int j = i + 1; j < prices.Length; j++)
+            {
+                if (prices[j] <= prices[i]) { prices[i] = prices[i] - prices[j]; break; }
+            }
+        }
+        return prices;
+    }
+
+    public int[] PivotArray(int[] nums, int pivot)
+    {
+        //2161 need to improve runtime
+        List<int> leftPivot = [];
+        List<int> midPivot = [];
+        List<int> rightPivot = [];
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] < pivot) { leftPivot.Add(nums[i]); continue; }
+            if (nums[i] > pivot) { rightPivot.Add(nums[i]); continue; }
+            midPivot.Add(nums[i]);
+        }
+        return [..leftPivot.Concat(midPivot).Concat(rightPivot)];
+    }
+
     
 }

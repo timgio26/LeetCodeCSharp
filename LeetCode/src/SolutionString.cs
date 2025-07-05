@@ -353,4 +353,15 @@ public class SolutionString
         }
         return string.Join(' ', words);
     }
+
+    public int CountSeniors(string[] details) {
+        //2678
+        int count = 0;
+        foreach (string detail in details)
+        {
+            if (Convert.ToInt16(detail[11..13])>60) { count++; }
+        }
+        return count;
+    }
 }
+
