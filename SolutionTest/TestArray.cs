@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using LeetCode.src;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 namespace SolutionTest;
 
@@ -468,7 +469,34 @@ public sealed class TestArray
         Solution mySolution = new();
         int[] expect = [9, 5, 3, 10, 10, 12, 14];
         CollectionAssert.AreEqual(expect, mySolution.PivotArray([9, 12, 5, 10, 14, 3, 10], 10));
-        expect = [-3,2,4,3];
-        CollectionAssert.AreEqual(expect, mySolution.PivotArray([-3,4,3,2],2));
+        expect = [-3, 2, 4, 3];
+        CollectionAssert.AreEqual(expect, mySolution.PivotArray([-3, 4, 3, 2], 2));
+    }
+
+    [TestMethod]
+    public void TestMinOperations3065()
+    {
+        Solution mysolution = new Solution();
+        Assert.AreEqual(3, mysolution.MinOperations3065([2, 11, 10, 1, 3], 10));
+        Assert.AreEqual(0, mysolution.MinOperations3065([1, 1, 2, 4, 9], 1));
+        Assert.AreEqual(4, mysolution.MinOperations3065([1, 1, 2, 4, 9], 9));
+    }
+
+    [TestMethod]
+    public void TestDecompressRLElist()
+    {
+        Solution mysolution = new Solution();
+        int[] expect = [2, 4, 4, 4];
+        CollectionAssert.AreEqual(expect, mysolution.DecompressRLElist([1, 2, 3, 4]));
+        expect = [1, 3, 3];
+        CollectionAssert.AreEqual(expect, mysolution.DecompressRLElist([1, 1, 2, 3]));
+    }
+
+    [TestMethod]
+    public void TestSumIndicesWithKSetBits()
+    {
+        Solution solution = new Solution();
+        Assert.AreEqual(13, solution.SumIndicesWithKSetBits([5, 10, 1, 5, 2], 1));
+        Assert.AreEqual(1, solution.SumIndicesWithKSetBits([4,3,2,1], 2));
     }
 }

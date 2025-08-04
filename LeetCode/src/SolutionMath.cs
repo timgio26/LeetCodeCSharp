@@ -1,6 +1,8 @@
 using System;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace LeetCode.src;
 
@@ -166,7 +168,7 @@ public class SolutionMath
                 tempArr[0] = arr[j];
                 for (int k = 1; k < tempArrLen; k++)
                 {
-                    tempArr[k] = arr[k + j] + tempArr[k- 1];
+                    tempArr[k] = arr[k + j] + tempArr[k - 1];
                 }
 
                 sum += tempArr[tempArrLen - 1];
@@ -174,6 +176,18 @@ public class SolutionMath
             }
         }
         return sum;
+    }
+
+    public int NumberOfMatches(int n)
+    {
+        //1688
+        int match = 0;
+        while (n > 1)
+        {
+            match += n / 2;
+            n = n / 2 + n % 2;
+        }
+        return match;
     }
 
     

@@ -7,7 +7,9 @@ using LeetCode.src;
 // ListNode node1 = new ListNode(10, node2);
 // System.Console.WriteLine(mySolution.InsertGreatestCommonDivisors(node1));
 
-System.Console.WriteLine("1234567890"[0..2]);
+SolutionMath mySolution = new();
+mySolution.NumberOfMatches(7);
+
 
 
 

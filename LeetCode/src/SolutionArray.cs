@@ -743,8 +743,77 @@ public class Solution
             if (nums[i] > pivot) { rightPivot.Add(nums[i]); continue; }
             midPivot.Add(nums[i]);
         }
-        return [..leftPivot.Concat(midPivot).Concat(rightPivot)];
+        return [.. leftPivot.Concat(midPivot).Concat(rightPivot)];
     }
 
-    
+    public int ArrayPairSum(int[] nums)
+    {
+        //561
+        Array.Sort(nums);
+        int count = 0;
+        for (int i = 0; i < nums.Length; i += 2)
+        {
+            count += nums[i];
+        }
+        return count;
+    }
+
+    public int MaximizeSum(int[] nums, int k)
+    {
+        //2656
+        int max = nums[0];
+        int result = 0;
+        for (int i = 1; i < nums.Length; i++) { if (nums[i] > max) { max = nums[i]; } }
+        for (int i = 0; i < k; i++)
+        {
+            result += max + i;
+
+        }
+        return result;
+    }
+
+    public int MinOperations3065(int[] nums, int k)
+    {
+        int count = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] < k) { count++; }
+        }
+        return count;
+    }
+
+    public int[] DecompressRLElist(int[] nums)
+    {
+        List<int> result = [];
+        for (int i = 0; i < nums.Length; i += 2)
+        {
+
+            for (int j = 0; j < nums[i]; j++)
+            {
+                result.Add(nums[i + 1]);
+            }
+
+        }
+        return result.ToArray();
+    }
+
+    public int SumIndicesWithKSetBits(IList<int> nums, int k)
+    {
+        //2859
+        int result = 0;
+        for (int i = 0; i < nums.Count; i++)
+        {
+            string bin = Convert.ToString(i, 2);
+            int count = 0;
+            for (int j = 0; j < bin.Length; j++)
+            {
+                if (bin[j] == '1') { count++; }
+                if (count == k && j == bin.Length - 1)
+                {
+                    result += nums[i];
+                }
+            }
+        }
+        return result;
+    }
 }
