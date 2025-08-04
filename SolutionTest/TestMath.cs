@@ -84,6 +84,33 @@ public class TestMath
         SolutionMath mySolution = new();
         Assert.AreEqual(3, mySolution.SumOddLengthSubarrays([1, 2]));
         Assert.AreEqual(58, mySolution.SumOddLengthSubarrays([1, 4, 2, 5, 3]));
-        Assert.AreEqual(66, mySolution.SumOddLengthSubarrays([10,11,12]));
+        Assert.AreEqual(66, mySolution.SumOddLengthSubarrays([10, 11, 12]));
+    }
+
+    [TestMethod]
+    public void TestCountDigits()
+    {
+        SolutionMath solution = new SolutionMath();
+        Assert.AreEqual(1, solution.CountDigits(7));
+        Assert.AreEqual(2, solution.CountDigits(121));
+        Assert.AreEqual(4, solution.CountDigits(1248));
+    }
+
+    [TestMethod]
+    public void TestSumOfMultiples()
+    {
+        SolutionMath solution = new SolutionMath();
+        Assert.AreEqual(21, solution.SumOfMultiples(7));
+        Assert.AreEqual(40, solution.SumOfMultiples(10));
+        Assert.AreEqual(30, solution.SumOfMultiples(9));
+    }
+
+    [TestMethod]
+    public void TestNumberOfSteps()
+    {
+        SolutionMath solution = new SolutionMath();
+        Assert.AreEqual(6, solution.NumberOfSteps(14));
+        Assert.AreEqual(4, solution.NumberOfSteps(8));
+        Assert.AreEqual(12, solution.NumberOfSteps(123));
     }
 }

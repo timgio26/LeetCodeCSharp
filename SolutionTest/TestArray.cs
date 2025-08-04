@@ -497,6 +497,23 @@ public sealed class TestArray
     {
         Solution solution = new Solution();
         Assert.AreEqual(13, solution.SumIndicesWithKSetBits([5, 10, 1, 5, 2], 1));
-        Assert.AreEqual(1, solution.SumIndicesWithKSetBits([4,3,2,1], 2));
+        Assert.AreEqual(1, solution.SumIndicesWithKSetBits([4, 3, 2, 1], 2));
+    }
+
+    [TestMethod]
+    public void TestMinElement3300()
+    {
+        Solution solution = new Solution();
+        Assert.AreEqual(1, solution.MinElement3300([10, 12, 13, 14]));
+        Assert.AreEqual(1, solution.MinElement3300([1, 2, 3, 4]));
+        Assert.AreEqual(10, solution.MinElement3300([999, 19, 199]));
+    }
+
+    [TestMethod]
+    public void TestDifferenceOfSum()
+    {
+        Solution solution = new Solution();
+        Assert.AreEqual(9, solution.DifferenceOfSum([1, 15, 6, 3]));
+        Assert.AreEqual(0, solution.DifferenceOfSum([1, 2, 3, 4]));
     }
 }

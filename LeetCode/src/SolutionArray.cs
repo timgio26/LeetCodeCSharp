@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Data;
 using System.Globalization;
 using System.IO.Pipelines;
 using System.Net;
@@ -813,6 +814,42 @@ public class Solution
                     result += nums[i];
                 }
             }
+        }
+        return result;
+    }
+
+    public int MinElement3300(int[] nums)
+    {
+        //3300
+        int min = int.MaxValue;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            char[] digits = nums[i].ToString().ToCharArray();
+            int sum = 0;
+            for (int j = 0; j < digits.Length; j++)
+            {
+                sum += int.Parse(digits[j].ToString());
+            }
+            if (sum < min) { min = sum; }
+            System.Console.WriteLine("=========");
+        }
+        return min;
+    }
+
+    public int DifferenceOfSum(int[] nums)
+    {
+        //2535
+        int result = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] < 10) { continue; }
+            char[] digits = nums[i].ToString().ToCharArray();
+            int charsum = 0;
+            for (int j = 0; j < digits.Length; j++)
+            {
+                charsum += int.Parse(digits[j].ToString());
+            }
+            result += Math.Abs(nums[i] - charsum);
         }
         return result;
     }

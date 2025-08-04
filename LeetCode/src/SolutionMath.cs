@@ -190,5 +190,44 @@ public class SolutionMath
         return match;
     }
 
+    public int CountDigits(int num)
+    {
+        //2520
+        int count = 0;
+        int numTemp = num;
+        while (numTemp > 0)
+        {
+            if (num % (numTemp % 10) == 0) { count++; }
+            numTemp /= 10;
+        }
+        return count;
+    }
+
+    public int SumOfMultiples(int n)
+    {
+        //2652
+        int sum = 0;
+        for (int i = 0; i <= n; i++)
+        {
+            if (i % 3 == 0 || i % 5 == 0 || i % 7 == 0) { sum += i; }
+
+        }
+        return sum;
+    }
+
+    public int NumberOfSteps(int num)
+    {
+        //1342
+        int count = 0;
+        int start = num;
+        while (start > 0)
+        {
+            if (start % 2 == 0) { start /= 2; count++; continue; }
+            start -= 1;
+            count++;
+        }
+        return count;
+    }
+
     
 }

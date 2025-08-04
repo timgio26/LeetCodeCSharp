@@ -8,7 +8,7 @@ using LeetCode.src;
 // System.Console.WriteLine(mySolution.InsertGreatestCommonDivisors(node1));
 
 SolutionMath mySolution = new();
-mySolution.NumberOfMatches(7);
+mySolution.SumOfMultiples(7);
 
 
 
