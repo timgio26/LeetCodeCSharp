@@ -7,8 +7,8 @@ using LeetCode.src;
 // ListNode node1 = new ListNode(10, node2);
 // System.Console.WriteLine(mySolution.InsertGreatestCommonDivisors(node1));
 
-SolutionMath mySolution = new();
-mySolution.SumOfMultiples(7);
+Solution mySolution = new();
+mySolution.DeleteGreatestValue([[1, 2, 4], [3, 3, 1]]);
 
 
 

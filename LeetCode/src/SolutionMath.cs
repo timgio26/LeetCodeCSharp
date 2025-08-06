@@ -1,9 +1,3 @@
-using System;
-using System.Reflection.Metadata.Ecma335;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Text.RegularExpressions;
-
 namespace LeetCode.src;
 
 public class SolutionMath
@@ -227,6 +221,71 @@ public class SolutionMath
             count++;
         }
         return count;
+    }
+
+    public int CountOperations(int num1, int num2)
+    {
+        //2169
+        int count = 0;
+        while (num1 > 0 && num2 > 0)
+        {
+            if (num1 > num2)
+            {
+                num1 -= num2;
+                count++;
+                continue;
+            }
+            num2 -= num1;
+            count++;
+
+        }
+        return count;
+    }
+
+    public int OddCells(int m, int n, int[][] indices)
+    {
+        int count = 0;
+        int[,] matrix = new int[m, n];
+        foreach (var i in indices)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                matrix[i[0], j] += 1;
+            }
+            for (int j = 0; j < m; j++)
+            {
+                matrix[j, i[1]] += 1;
+            }
+        }
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                if (matrix[i, j] % 2 == 1) { count++; }
+            }
+        }
+        return count;
+    }
+
+    public int FindClosest(int x, int y, int z)
+    {
+        //3516
+        return Math.Abs(z - x) == Math.Abs(z - y) ? 0 : Math.Abs(z - x) > Math.Abs(z - y) ? 2 : 1;
+    }
+
+    public int FindGCD(int[] nums)
+    {
+        //1979
+        int min = nums.Min();
+        int max = nums.Max();
+        System.Console.WriteLine(max%min);
+        while (max % min != 0)
+        {
+            int tempmax = max;
+            max = min;
+            min = tempmax % min;
+        }
+        return min;
     }
 
     

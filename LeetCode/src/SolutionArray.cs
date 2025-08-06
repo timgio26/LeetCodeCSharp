@@ -1,12 +1,3 @@
-using System;
-using System.ComponentModel;
-using System.Data;
-using System.Globalization;
-using System.IO.Pipelines;
-using System.Net;
-using System.Runtime.InteropServices;
-using Microsoft.VisualBasic;
-
 namespace LeetCode.src;
 
 public class Solution
@@ -852,5 +843,67 @@ public class Solution
             result += Math.Abs(nums[i] - charsum);
         }
         return result;
+    }
+
+    public int CountKDifference(int[] nums, int k)
+    {
+        int count = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            for (int j = i + 1; j < nums.Length; j++)
+            {
+                if (Math.Abs(nums[i] - nums[j]) == k) { count++; }
+            }
+        }
+        return count;
+    }
+
+    public int DeleteGreatestValue(int[][] grid)
+    {
+        //2500
+        int result = 0;
+        int count = 0;
+        while (count != grid[0].Length)
+        {
+            int max = 0;
+            for (int i = 0; i < grid.Length; i++)
+            {
+                int maxLocal = 0;
+                int maxLocalIdx = 0;
+                for (int j = 0; j < grid[i].Length; j++)
+                {
+                    if (grid[i][j] > maxLocal) { maxLocal = grid[i][j]; maxLocalIdx = j; }
+                    if (maxLocal > max) { max = maxLocal; }
+                }
+                grid[i][maxLocalIdx] = 0;
+            }
+            result += max;
+            count++;
+        }
+        return result;
+    }
+
+    public int CountGoodTriplets(int[] arr, int a, int b, int c)
+    {
+        //1534
+        int count = 0;
+        for (int i = 0; i < arr.Length; i++)
+        {
+            for (int j = i+1; j < arr.Length; j++)
+            {
+                for (int k = j+1; k < arr.Length; k++)
+                {
+                    // if (i < j && j < k)
+                    // {
+                        if ((Math.Abs(arr[i] - arr[j]) <= a) && (Math.Abs(arr[j] - arr[k]) <= b) && (Math.Abs(arr[i] - arr[k]) <= c))
+                        {
+                            count++;
+                        }
+
+                    // }
+                }
+            }
+        }
+        return count;
     }
 }

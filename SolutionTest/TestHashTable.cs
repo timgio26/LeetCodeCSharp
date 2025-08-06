@@ -46,6 +46,18 @@ public class TestHashTable
         expected = [2, 3, 1];
         CollectionAssert.AreEquivalent(expected, (List<int>)mySol.TwoOutOfThree([3, 1], [2, 3], [1, 2]));
         expected = [];
-        CollectionAssert.AreEquivalent(expected, (List<int>)mySol.TwoOutOfThree([1,2,2], [4,3,3], [5]));
+        CollectionAssert.AreEquivalent(expected, (List<int>)mySol.TwoOutOfThree([1, 2, 2], [4, 3, 3], [5]));
+    }
+
+    [TestMethod]
+    public void TestFrequencySort()
+    {
+        SolutionHashTable mySol = new();
+        int[] expected = [3, 1, 1, 2, 2, 2];
+        CollectionAssert.AreEqual(expected, mySol.FrequencySort([1, 1, 2, 2, 2, 3]));
+        expected = [1,3,3,2,2];
+        CollectionAssert.AreEqual(expected, mySol.FrequencySort([2,3,1,3,2]));
+        expected = [5,-1,4,4,-6,-6,1,1,1];
+        CollectionAssert.AreEqual(expected,mySol.FrequencySort([-1,1,-6,4,5,-6,1,4,1]));
     }
 }

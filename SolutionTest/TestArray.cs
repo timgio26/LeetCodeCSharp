@@ -516,4 +516,29 @@ public sealed class TestArray
         Assert.AreEqual(9, solution.DifferenceOfSum([1, 15, 6, 3]));
         Assert.AreEqual(0, solution.DifferenceOfSum([1, 2, 3, 4]));
     }
+
+    [TestMethod]
+    public void TestCountKDifference()
+    {
+        Solution solution = new Solution();
+        Assert.AreEqual(4, solution.CountKDifference([1, 2, 2, 1], 1));
+        Assert.AreEqual(0, solution.CountKDifference([1, 3], 3));
+        Assert.AreEqual(3, solution.CountKDifference([3, 2, 1, 5, 4], 2));
+    }
+
+    [TestMethod]
+    public void TestDeleteGreatestValue()
+    {
+        Solution solution = new Solution();
+        Assert.AreEqual(8, solution.DeleteGreatestValue([[1, 2, 4], [3, 3, 1]]));
+        Assert.AreEqual(10, solution.DeleteGreatestValue([[10]]));
+    }
+
+    [TestMethod]
+    public void TestCountGoodTriplets()
+    {
+        Solution solution = new Solution();
+        Assert.AreEqual(4, solution.CountGoodTriplets([3, 0, 1, 1, 9, 7], 7, 2, 3));
+        Assert.AreEqual(0, solution.CountGoodTriplets([1,1,2,2,3], 0, 0, 1));
+    }
 }

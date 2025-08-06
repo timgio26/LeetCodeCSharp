@@ -73,4 +73,33 @@ public class SolutionHashTable
         }
         return [.. allNums];
     }
+
+    public int[] FrequencySort(int[] nums)
+    {
+        //1636
+        Dictionary<int, int> numsDict = new();
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (!numsDict.ContainsKey(nums[i])) { numsDict.Add(nums[i], 0); }
+            numsDict[nums[i]] += 1;
+        }
+        List<int> result = [];
+        while (numsDict.Count > 0)
+        {
+            int tempKey = int.MinValue;
+            int tempFreq = int.MaxValue;
+            foreach (var i in numsDict)
+            {
+                if (i.Value < tempFreq) { tempFreq = i.Value; tempKey = i.Key; }
+                if (i.Value == tempFreq && i.Key > tempKey) { tempKey = i.Key; }
+            }
+            for (int j = 0; j < tempFreq; j++)
+            {
+                result.Add(tempKey);
+            }
+            numsDict.Remove(tempKey);
+        }
+        return result.ToArray();
+
+    }
 }

@@ -113,4 +113,29 @@ public class TestMath
         Assert.AreEqual(4, solution.NumberOfSteps(8));
         Assert.AreEqual(12, solution.NumberOfSteps(123));
     }
+
+    [TestMethod]
+    public void TestCountOperations()
+    {
+        SolutionMath solution = new SolutionMath();
+        Assert.AreEqual(3, solution.CountOperations(2, 3));
+        Assert.AreEqual(1, solution.CountOperations(10, 10));
+    }
+
+    [TestMethod]
+    public void TestOddCells()
+    {
+        SolutionMath solutionMath = new SolutionMath();
+        Assert.AreEqual(6, solutionMath.OddCells(2, 3, [[0, 1], [1, 1]]));
+        Assert.AreEqual(0, solutionMath.OddCells(2, 2, [[1, 1], [0, 0]]));
+    }
+
+    [TestMethod]
+    public void TestFindCdg()
+    {
+        SolutionMath solutionMath = new SolutionMath();
+        Assert.AreEqual(2, solutionMath.FindGCD([2, 5, 6, 9, 10]));
+        Assert.AreEqual(1, solutionMath.FindGCD([7, 5, 6, 8, 3]));
+        Assert.AreEqual(3, solutionMath.FindGCD([3,3]));
+    }
 }
