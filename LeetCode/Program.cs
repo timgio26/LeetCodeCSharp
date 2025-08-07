@@ -8,7 +8,7 @@ using LeetCode.src;
 // System.Console.WriteLine(mySolution.InsertGreatestCommonDivisors(node1));
 
 Solution mySolution = new();
-mySolution.DeleteGreatestValue([[1, 2, 4], [3, 3, 1]]);
+mySolution.FlipAndInvertImage([[1, 1, 0], [1, 0, 1], [0, 0, 0]]);
 
 
 

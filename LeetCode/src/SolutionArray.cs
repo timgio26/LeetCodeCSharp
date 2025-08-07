@@ -889,21 +889,93 @@ public class Solution
         int count = 0;
         for (int i = 0; i < arr.Length; i++)
         {
-            for (int j = i+1; j < arr.Length; j++)
+            for (int j = i + 1; j < arr.Length; j++)
             {
-                for (int k = j+1; k < arr.Length; k++)
+                for (int k = j + 1; k < arr.Length; k++)
                 {
                     // if (i < j && j < k)
                     // {
-                        if ((Math.Abs(arr[i] - arr[j]) <= a) && (Math.Abs(arr[j] - arr[k]) <= b) && (Math.Abs(arr[i] - arr[k]) <= c))
-                        {
-                            count++;
-                        }
+                    if ((Math.Abs(arr[i] - arr[j]) <= a) && (Math.Abs(arr[j] - arr[k]) <= b) && (Math.Abs(arr[i] - arr[k]) <= c))
+                    {
+                        count++;
+                    }
 
                     // }
                 }
             }
         }
         return count;
+    }
+
+    public int[][] FlipAndInvertImage(int[][] image)
+    {
+        //832
+        for (int i = 0; i < image.Length; i++)
+        {
+            int left = 0, right = image[i].Length - 1;
+            while (left <= right)
+            {
+                int tempRightInv = image[i][right] == 1 ? 0 : 1;
+                image[i][right] = image[i][left] == 1 ? 0 : 1;
+                image[i][left] = tempRightInv;
+                left++; right--;
+            }
+        }
+        return image;
+    }
+
+    public int[] SeparateDigits(int[] nums)
+    {
+        //2553
+        List<int> ints = new();
+        for (int i = 0; i < nums.Length; i++)
+        {
+            List<int> ints1 = new();
+            while (nums[i] > 0)
+            {
+                ints1.Add(nums[i] % 10);
+                nums[i] /= 10;
+            }
+            for (int j = ints1.Count - 1; j >= 0; j--)
+            {
+                ints.Add(ints1[j]);
+            }
+        }
+        return ints.ToArray();
+    }
+
+    public int MaximumCount(int[] nums)
+    {
+        //2529
+        int numsLen = nums.Length;
+        int left = 0, right = numsLen - 1;
+        while (nums[left] < 0 || nums[right] > 0)
+        {
+            if (nums[left] < 0) { left++; }
+            if (nums[right] > 0) { right--; }
+            if (right == -1 || left == numsLen) { break; }
+        }
+        return left > numsLen - right - 1 ? left : numsLen - right - 1;
+    }
+
+    public IList<int> FindPeaks(int[] mountain)
+    {
+        //2951
+        List<int> ints = new();
+        for (int i = 1; i < mountain.Length - 1; i++)
+        {
+            if (mountain[i] > mountain[i - 1] && mountain[i] > mountain[i + 1]) { ints.Add(i); }
+        }
+        return ints;
+    }
+
+    public int SmallestEqual(int[] nums)
+    {
+        //2057
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (i % 10 == nums[i]) { return i; }
+        }
+        return -1;
     }
 }

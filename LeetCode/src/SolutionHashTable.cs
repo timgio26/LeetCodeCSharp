@@ -161,4 +161,26 @@ public class SolutionHashTable
         }
         return convertedWord.Count;
     }
+
+    public int[][] MergeArrays(int[][] nums1, int[][] nums2)
+    {
+        //2570
+        SortedDictionary<int, int> keyValuePairs = new();
+        List<int[]> ints = new();
+        for (int i = 0; i < nums1.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(nums1[i][0])) { keyValuePairs.Add(nums1[i][0], 0); }
+            keyValuePairs[nums1[i][0]] += nums1[i][1];
+        }
+        for (int i = 0; i < nums2.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(nums2[i][0])) { keyValuePairs.Add(nums2[i][0], 0); }
+            keyValuePairs[nums2[i][0]] += nums2[i][1];
+        }
+        foreach(var i in keyValuePairs)
+        {
+            ints.Add([i.Key, i.Value]);
+        }
+        return ints.ToArray();
+    }
 }

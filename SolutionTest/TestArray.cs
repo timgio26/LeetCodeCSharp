@@ -539,6 +539,16 @@ public sealed class TestArray
     {
         Solution solution = new Solution();
         Assert.AreEqual(4, solution.CountGoodTriplets([3, 0, 1, 1, 9, 7], 7, 2, 3));
-        Assert.AreEqual(0, solution.CountGoodTriplets([1,1,2,2,3], 0, 0, 1));
+        Assert.AreEqual(0, solution.CountGoodTriplets([1, 1, 2, 2, 3], 0, 0, 1));
+    }
+
+    [TestMethod]
+    public void TestFlipAndInvertImage()
+    {
+        Solution solution = new Solution();
+        int[][] expected = [[1, 0, 0], [0, 1, 0], [1, 1, 1]];
+        CollectionAssert.AreEqual(expected, solution.FlipAndInvertImage([[1, 1, 0], [1, 0, 1], [0, 0, 0]]));
+        expected = [[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 0, 1], [1, 0, 1, 0]];
+        CollectionAssert.AreEqual(expected, solution.FlipAndInvertImage([[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]));
     }
 }
