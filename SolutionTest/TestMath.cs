@@ -136,6 +136,23 @@ public class TestMath
         SolutionMath solutionMath = new SolutionMath();
         Assert.AreEqual(2, solutionMath.FindGCD([2, 5, 6, 9, 10]));
         Assert.AreEqual(1, solutionMath.FindGCD([7, 5, 6, 8, 3]));
-        Assert.AreEqual(3, solutionMath.FindGCD([3,3]));
+        Assert.AreEqual(3, solutionMath.FindGCD([3, 3]));
+    }
+
+    [TestMethod]
+    public void TestFindNumbers1295()
+    {
+        SolutionMath solutionMath = new();
+        Assert.AreEqual(2, solutionMath.FindNumbers1295([12, 345, 2, 6, 7896]));
+        Assert.AreEqual(1, solutionMath.FindNumbers1295([555, 901, 482, 1771]));
+    }
+
+    [TestMethod]
+    public void TestSmallestIndex()
+    {
+        SolutionMath solutionMath = new();
+        Assert.AreEqual(2, solutionMath.SmallestIndex([1, 3, 2]));
+        Assert.AreEqual(1, solutionMath.SmallestIndex([1, 10, 11]));
+        Assert.AreEqual(-1, solutionMath.SmallestIndex([1,2,3]));
     }
 }

@@ -55,9 +55,35 @@ public class TestHashTable
         SolutionHashTable mySol = new();
         int[] expected = [3, 1, 1, 2, 2, 2];
         CollectionAssert.AreEqual(expected, mySol.FrequencySort([1, 1, 2, 2, 2, 3]));
-        expected = [1,3,3,2,2];
-        CollectionAssert.AreEqual(expected, mySol.FrequencySort([2,3,1,3,2]));
-        expected = [5,-1,4,4,-6,-6,1,1,1];
-        CollectionAssert.AreEqual(expected,mySol.FrequencySort([-1,1,-6,4,5,-6,1,4,1]));
+        expected = [1, 3, 3, 2, 2];
+        CollectionAssert.AreEqual(expected, mySol.FrequencySort([2, 3, 1, 3, 2]));
+        expected = [5, -1, 4, 4, -6, -6, 1, 1, 1];
+        CollectionAssert.AreEqual(expected, mySol.FrequencySort([-1, 1, -6, 4, 5, -6, 1, 4, 1]));
+    }
+
+    [TestMethod]
+    public void TestKthDistinct()
+    {
+        SolutionHashTable mySol = new();
+        Assert.AreEqual("a", mySol.KthDistinct(["d", "b", "c", "b", "c", "a"], 2));
+        Assert.AreEqual("aaa", mySol.KthDistinct(["aaa", "aa", "a"], 1));
+        Assert.AreEqual("", mySol.KthDistinct(["a", "b", "a"], 3));
+    }
+
+    [TestMethod]
+    public void TestMaxFrequencyElements()
+    {
+        SolutionHashTable mySol = new();
+        Assert.AreEqual(4, mySol.MaxFrequencyElements([1, 2, 2, 3, 1, 4]));
+        Assert.AreEqual(5, mySol.MaxFrequencyElements([1, 2, 3, 4, 5]));
+
+    }
+
+    [TestMethod]
+    public void TestUniqueMorseRepresentations()
+    {
+        SolutionHashTable mySol = new();
+        Assert.AreEqual(2, mySol.UniqueMorseRepresentations(["gin", "zen", "gig", "msg"]));
+        Assert.AreEqual(1, mySol.UniqueMorseRepresentations(["a"]));
     }
 }

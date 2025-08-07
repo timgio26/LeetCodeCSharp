@@ -278,7 +278,7 @@ public class SolutionMath
         //1979
         int min = nums.Min();
         int max = nums.Max();
-        System.Console.WriteLine(max%min);
+        System.Console.WriteLine(max % min);
         while (max % min != 0)
         {
             int tempmax = max;
@@ -287,6 +287,41 @@ public class SolutionMath
         }
         return min;
     }
+
+    public int FindNumbers1295(int[] nums)
+    {
+        //1295
+        int result = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            int count = 0;
+            while (nums[i] > 0)
+            {
+                nums[i] /= 10;
+                count++;
+            }
+            if (count % 2 == 0) { result++; }
+        }
+        return result;
+    }
+
+    public int SmallestIndex(int[] nums)
+    {
+        //3550
+        for (int i = 0; i < nums.Length; i++)
+        {
+            int digitSum = 0;
+            while (nums[i] > 0)
+            {
+                digitSum += nums[i] % 10;
+                nums[i] /= 10;
+            }
+            if (i == digitSum) { return i; }
+        }
+        return -1;
+    }
+
+    
 
     
 }

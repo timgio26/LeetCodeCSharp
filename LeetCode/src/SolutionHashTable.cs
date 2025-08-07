@@ -102,4 +102,63 @@ public class SolutionHashTable
         return result.ToArray();
 
     }
+
+    public string KthDistinct(string[] arr, int k)
+    {
+        //2053
+        Dictionary<string, int> keyValuePairs = new();
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(arr[i])) { keyValuePairs.Add(arr[i], 0); }
+            keyValuePairs[arr[i]] += 1;
+        }
+        foreach (var i in keyValuePairs)
+        {
+            if (i.Value == 1) { k--; }
+            if (k == 0) { return i.Key; }
+        }
+        return "";
+    }
+
+    public int MaxFrequencyElements(int[] nums)
+    {
+        //3005
+        int result = 0;
+        int maxFreq = 0;
+        Dictionary<int, int> keyValuePairs = new();
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(nums[i])) { keyValuePairs.Add(nums[i], 0); }
+            keyValuePairs[nums[i]] += 1;
+            if (keyValuePairs[nums[i]] > maxFreq) { maxFreq = keyValuePairs[nums[i]]; }
+        }
+        foreach (var i in keyValuePairs)
+        {
+            if (i.Value == maxFreq) { result += i.Value; }
+        }
+        return result;
+    }
+
+    public int UniqueMorseRepresentations(string[] words)
+    {
+        //804
+        string[] morseCode = [".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."];
+        Dictionary<char, string> keyValuePairs = new();
+        char alp = 'a';
+        for (int i = 0; i < morseCode.Length; i++)
+        {
+            keyValuePairs.Add(alp++, morseCode[i]);
+        }
+        HashSet<string> convertedWord = [];
+        for (int i = 0; i < words.Length; i++)
+        {
+            List<string> convertedLetter = [];
+            for (int j = 0; j < words[i].Length; j++)
+            {
+                convertedLetter.Add(keyValuePairs[words[i][j]]);
+            }
+            convertedWord.Add(string.Concat(convertedLetter));
+        }
+        return convertedWord.Count;
+    }
 }
