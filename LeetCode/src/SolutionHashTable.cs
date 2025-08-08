@@ -177,10 +177,91 @@ public class SolutionHashTable
             if (!keyValuePairs.ContainsKey(nums2[i][0])) { keyValuePairs.Add(nums2[i][0], 0); }
             keyValuePairs[nums2[i][0]] += nums2[i][1];
         }
-        foreach(var i in keyValuePairs)
+        foreach (var i in keyValuePairs)
         {
             ints.Add([i.Key, i.Value]);
         }
         return ints.ToArray();
+    }
+
+    public IList<IList<int>> MergeSimilarItems(int[][] items1, int[][] items2)
+    {
+        //2363 cant make the test 
+        SortedDictionary<int, int> keyValuePairs = new();
+        List<List<int>> result = [];
+        for (int i = 0; i < items1.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(items1[i][0])) { keyValuePairs.Add(items1[i][0], 0); }
+            keyValuePairs[items1[i][0]] += items1[i][1];
+        }
+        for (int i = 0; i < items2.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(items2[i][0])) { keyValuePairs.Add(items2[i][0], 0); }
+            keyValuePairs[items2[i][0]] += items2[i][1];
+        }
+        foreach (var i in keyValuePairs)
+        {
+            result.Add([i.Key, i.Value]);
+        }
+        return result.ToArray();
+    }
+
+    public IList<IList<int>> GroupThePeople(int[] groupSizes)
+    {
+        //1282
+        // can be optimized using buckets[size].Clear(); so each time bucket full add to result
+        Dictionary<int, int> keyValuePairs = new();
+        for (int i = 0; i < groupSizes.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(groupSizes[i])) { keyValuePairs.Add(groupSizes[i], 0); }
+            keyValuePairs[groupSizes[i]]++;
+        }
+        // int count = 0;
+        Dictionary<char, int> groupxcapacity = new();
+        Dictionary<char, List<int>> groupxmember = new();
+        char groupName = 'a';
+        foreach (var i in keyValuePairs)
+        {
+            for (int j = 0; j < i.Value / i.Key; j++)
+            {
+                groupxcapacity.Add(groupName, i.Key);
+                groupxmember.Add(groupName, []);
+                groupName++;
+            }
+        }
+
+        for (int i = 0; i < groupSizes.Length; i++)
+        {
+            foreach (var j in groupxcapacity)
+            {
+                if (j.Value == groupSizes[i] && groupxmember[j.Key].Count < groupSizes[i])
+                {
+                    groupxmember[j.Key].Add(i);
+                    break;
+                }
+            }
+        }
+        IList<IList<int>> ints = [];
+        foreach (var i in groupxmember)
+        {
+            ints.Add(i.Value);
+        }
+        return ints;
+    }
+
+    public int SumOfUnique(int[] nums)
+    {
+        Dictionary<int, int> keyValuePairs = new();
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(nums[i])) { keyValuePairs.Add(nums[i], 0); }
+            keyValuePairs[nums[i]]++;
+        }
+        int count = 0;
+        foreach (var i in keyValuePairs)
+        {
+            if (i.Value == 1) count += i.Key;
+        }
+        return count;
     }
 }

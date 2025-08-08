@@ -196,6 +196,14 @@ public class TestString
     {
         SolutionString mySolution = new();
         Assert.AreEqual(2, mySolution.CountSeniors(["7868190130M7522", "5303914400F9211", "9273338290F4010"]));
-        Assert.AreEqual(0, mySolution.CountSeniors(["1313579440F2036","2921522980M5644"]));
+        Assert.AreEqual(0, mySolution.CountSeniors(["1313579440F2036", "2921522980M5644"]));
+    }
+
+    [TestMethod]
+    public void TestMaximumOddBinaryNumber()
+    {
+        SolutionString sol = new();
+        Assert.AreEqual("001", sol.MaximumOddBinaryNumber("010"));
+        Assert.AreEqual("1001", sol.MaximumOddBinaryNumber("0101"));
     }
 }

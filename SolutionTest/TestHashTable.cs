@@ -95,6 +95,5 @@ public class TestHashTable
         CollectionAssert.AreEqual(expect, mySol.MergeArrays([[1, 2], [2, 3], [4, 5]], [[1, 4], [3, 2], [4, 1]]));
         expect = [[1, 3], [2, 4], [3, 6], [4, 3], [5, 5]];
         CollectionAssert.AreEqual(expect, mySol.MergeArrays([[2, 4], [3, 6], [5, 5]], [[1, 3], [4, 3]]));
-        
     }
 }

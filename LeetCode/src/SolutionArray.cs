@@ -978,4 +978,32 @@ public class Solution
         }
         return -1;
     }
+
+    public IList<int> TargetIndices(int[] nums, int target)
+    {
+        //2089
+        List<int> ints = [];
+        Array.Sort(nums);
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] == target) { ints.Add(i); }
+            if (nums[i] > target) { break; }
+        }
+        return ints;
+    }
+    public int[] RowAndMaximumOnes(int[][] mat)
+    {
+        //2643
+        int maxidx = 0, maxcount = 0;
+        for (int i = 0; i < mat.Length; i++)
+        {
+            int count = 0;
+            for (int j = 0; j < mat[i].Length; j++)
+            {
+                if (mat[i][j] == 1) { count++; }
+            }
+            if (count > maxcount) { maxidx = i; maxcount = count; }
+        }
+        return [maxidx, maxcount];
+    }
 }

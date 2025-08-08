@@ -354,14 +354,76 @@ public class SolutionString
         return string.Join(' ', words);
     }
 
-    public int CountSeniors(string[] details) {
+    public int CountSeniors(string[] details)
+    {
         //2678
         int count = 0;
         foreach (string detail in details)
         {
-            if (Convert.ToInt16(detail[11..13])>60) { count++; }
+            if (Convert.ToInt16(detail[11..13]) > 60) { count++; }
         }
         return count;
+    }
+
+    public string MaximumOddBinaryNumber(string s)
+    {
+        //2864
+        int count1 = 0, count0 = 0;
+        List<char> chars = new();
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (s[i] == '1') { count1++; continue; }
+            count0++;
+        }
+        for (int i = 0; i < count1 - 1; i++)
+        {
+            chars.Add('1');
+        }
+        for (int i = 0; i < count0; i++)
+        {
+            chars.Add('0');
+        }
+        for (int i = 0; i < count1 - (count1 - 1); i++)
+        {
+            chars.Add('1');
+        }
+        return string.Concat(chars);
+    }
+
+    public int NumOfStrings(string[] patterns, string word)
+    {
+        //1967
+        int count = 0;
+        for (int i = 0; i < patterns.Length; i++)
+        {
+            if (word.Contains(patterns[i])) { count++; }
+        }
+        return count;
+    }
+
+    public bool IsAcronym(IList<string> words, string s)
+    {
+        //2828
+        List<char> chars = new();
+        foreach (string i in words)
+        {
+            chars.Add(i[0]);
+        }
+        return string.Equals(s, string.Concat(chars));
+    }
+
+    public int FinalPositionOfSnake(int n, IList<string> commands)
+    {
+        //3248
+        int pos = 0;
+        for (int i = 0; i < commands.Count; i++)
+        {
+            if (commands[i] == "DOWN") { pos += n; continue; }
+            if (commands[i] == "RIGHT") { pos += 1; continue; }
+            if (commands[i] == "UP") { pos -= n; continue; }
+            if (commands[i] == "LEFT") { pos -= 1; continue; }
+        }
+        return pos;
     }
 }
 

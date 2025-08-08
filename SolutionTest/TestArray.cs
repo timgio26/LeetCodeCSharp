@@ -549,6 +549,36 @@ public sealed class TestArray
         int[][] expected = [[1, 0, 0], [0, 1, 0], [1, 1, 1]];
         CollectionAssert.AreEqual(expected, solution.FlipAndInvertImage([[1, 1, 0], [1, 0, 1], [0, 0, 0]]));
         expected = [[1, 1, 0, 0], [0, 1, 1, 0], [0, 0, 0, 1], [1, 0, 1, 0]];
-        CollectionAssert.AreEqual(expected, solution.FlipAndInvertImage([[1,1,0,0],[1,0,0,1],[0,1,1,1],[1,0,1,0]]));
+        CollectionAssert.AreEqual(expected, solution.FlipAndInvertImage([[1, 1, 0, 0], [1, 0, 0, 1], [0, 1, 1, 1], [1, 0, 1, 0]]));
+    }
+
+    [TestMethod]
+    public void TestMaxProduct()
+    {
+        Solution solution = new();
+        Assert.AreEqual(12, solution.MaxProduct([3, 4, 5, 2]));
+        Assert.AreEqual(16, solution.MaxProduct([1, 5, 4, 5]));
+        Assert.AreEqual(12, solution.MaxProduct([3, 7]));
+    }
+
+    [TestMethod]
+    public void TestHeightChecker()
+    {
+        Solution solution = new();
+        Assert.AreEqual(3, solution.HeightChecker([1, 1, 4, 2, 1, 3]));
+        Assert.AreEqual(5, solution.HeightChecker([5, 1, 2, 3, 4]));
+        Assert.AreEqual(0, solution.HeightChecker([1, 2, 3, 4, 5]));
+    }
+
+    [TestMethod]
+    public void TestTargetIndices()
+    {
+        Solution solution = new();
+        List<int> expect = [1, 2];
+        CollectionAssert.AreEqual(expect, (List<int>)solution.TargetIndices([1, 2, 5, 2, 3], 2));
+        expect = [3];
+        CollectionAssert.AreEqual(expect, (List<int>)solution.TargetIndices([1, 2, 5, 2, 3], 3));
+        expect = [4];
+        CollectionAssert.AreEqual(expect, (List<int>)solution.TargetIndices([1,2,5,2,3], 5));
     }
 }
