@@ -321,6 +321,20 @@ public class SolutionMath
         return -1;
     }
 
+    public int PivotInteger(int n)
+    {
+        //2485 triangular numbers
+        int all = n * (n + 1)/2;
+        for (int i = 1; i <= n; i++)
+        {
+            int left = i * (i + 1) / 2;
+            int right = all - ((i - 1) * i / 2);
+            if (left == right) { return i; }
+            if (left > right) { break; }
+        }
+        return -1;
+    }
+
     
 
     

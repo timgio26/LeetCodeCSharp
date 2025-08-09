@@ -206,4 +206,21 @@ public class TestString
         Assert.AreEqual("001", sol.MaximumOddBinaryNumber("010"));
         Assert.AreEqual("1001", sol.MaximumOddBinaryNumber("0101"));
     }
+
+    [TestMethod]
+    public void TestCellsInRange()
+    {
+        SolutionString solutionString = new();
+        List<string> strings = ["K1", "K2", "L1", "L2"];
+        CollectionAssert.AreEqual(strings, (List<string>)solutionString.CellsInRange("K1:L2"));
+        strings = ["A1", "B1", "C1", "D1", "E1", "F1"];
+        CollectionAssert.AreEqual(strings, (List<string>)solutionString.CellsInRange("A1:F1"));
+    }
+
+    [TestMethod]
+    public void TestSortSentence()
+    {
+        SolutionString solutionString = new();
+        Assert.AreEqual("This is a sentence", solutionString.SortSentence("is2 sentence4 This1 a3"));
+    }
 }

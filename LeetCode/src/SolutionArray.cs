@@ -1,3 +1,5 @@
+using System.Security.Principal;
+
 namespace LeetCode.src;
 
 public class Solution
@@ -1005,5 +1007,87 @@ public class Solution
             if (count > maxcount) { maxidx = i; maxcount = count; }
         }
         return [maxidx, maxcount];
+    }
+
+    public int AddedInteger(int[] nums1, int[] nums2)
+    {
+        //3131
+        return nums2.Max() - nums1.Max();
+    }
+
+    public int SumOfSquares(int[] nums)
+    {
+        //2778
+        int sum = 0;
+        int len = nums.Length;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (len % (i + 1) == 0) { sum += nums[i] * nums[i]; }
+        }
+        return sum;
+    }
+
+    public bool IsArraySpecial(int[] nums)
+    {
+        //3151
+        for (int i = 0; i < nums.Length - 1; i++)
+        {
+            if (nums[i] % 2 == nums[i + 1] % 2) { return false; }
+        }
+        return true;
+    }
+
+    public int[] FindEvenNumbers(int[] digits)
+    {
+        //2094
+        // can optimized by check using from 100 to 999
+        HashSet<int> ints = new();
+        Array.Sort(digits);
+        for (int i = 0; i < digits.Length; i++)
+        {
+            if (digits[i] == 0) { continue; }
+            for (int j = 0; j < digits.Length; j++)
+            {
+                if (j == i) { continue; }
+                for (int k = 0; k < digits.Length; k++)
+                {
+                    if (k == j || k == i || digits[k] % 2 == 1) { continue; }
+                    ints.Add(digits[i] * 100 + digits[j] * 10 + digits[k]);
+                }
+            }
+        }
+        return ints.ToArray();
+    }
+
+    public int SumCounts2913(IList<int> nums)
+    {
+        //2913
+        int count = 0;
+        int[] ints = nums.ToArray();
+        for (int i = 0; i < nums.Count; i++)
+        {
+            for (int j = i; j < nums.Count; j++)
+            {
+                HashSet<int> ints1 = new HashSet<int>(ints[i..(j + 1)]);
+                count += ints1.Count * ints1.Count;
+            }
+        }
+        return count;
+    }
+
+    public IList<IList<int>> FindDifference(int[] nums1, int[] nums2)
+    {
+        //2215
+        HashSet<int> ints1 = new(nums1), ints2 = new(nums2);
+        List<int> onlyIn1 = [], onlyIn2 = [];
+        foreach (int i in ints1)
+        {
+            if (!ints2.Contains(i)) { onlyIn1.Add(i); }
+        }
+        foreach (int i in ints2)
+        {
+            if (!ints1.Contains(i)) { onlyIn2.Add(i); }
+        }
+        return [onlyIn1, onlyIn2];
     }
 }

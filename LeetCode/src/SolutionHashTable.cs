@@ -264,4 +264,21 @@ public class SolutionHashTable
         }
         return count;
     }
+
+    public bool UniqueOccurrences(int[] arr)
+    {
+        //1207
+        Dictionary<int, int> keyValuePairs = new();
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(arr[i])) { keyValuePairs.Add(arr[i], 0); }
+            keyValuePairs[arr[i]]++;
+        }
+        HashSet<int> ints = [];
+        foreach (KeyValuePair<int, int> i in keyValuePairs)
+        {
+            ints.Add(i.Value);
+        }
+        return ints.Count() == keyValuePairs.Count;
+    }
 }

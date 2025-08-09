@@ -7,8 +7,8 @@ using LeetCode.src;
 // ListNode node1 = new ListNode(10, node2);
 // System.Console.WriteLine(mySolution.InsertGreatestCommonDivisors(node1));
 
-Solution mySolution = new();
-mySolution.FlipAndInvertImage([[1, 1, 0], [1, 0, 1], [0, 0, 0]]);
+SolutionMath mySolution = new();
+
 
 
 

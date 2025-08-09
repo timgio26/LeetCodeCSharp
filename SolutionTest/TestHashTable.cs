@@ -96,4 +96,13 @@ public class TestHashTable
         expect = [[1, 3], [2, 4], [3, 6], [4, 3], [5, 5]];
         CollectionAssert.AreEqual(expect, mySol.MergeArrays([[2, 4], [3, 6], [5, 5]], [[1, 3], [4, 3]]));
     }
+
+    [TestMethod]
+    public void TestUniqueOccurrences()
+    {
+        SolutionHashTable mySol = new();
+        Assert.IsTrue(mySol.UniqueOccurrences([1, 2, 2, 1, 1, 3]));
+        Assert.IsFalse(mySol.UniqueOccurrences([1,2]));
+        Assert.IsTrue(mySol.UniqueOccurrences([-3,0,1,-3,1,1,1,-3,10,0]));
+    }
 }

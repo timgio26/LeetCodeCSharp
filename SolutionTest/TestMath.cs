@@ -153,6 +153,15 @@ public class TestMath
         SolutionMath solutionMath = new();
         Assert.AreEqual(2, solutionMath.SmallestIndex([1, 3, 2]));
         Assert.AreEqual(1, solutionMath.SmallestIndex([1, 10, 11]));
-        Assert.AreEqual(-1, solutionMath.SmallestIndex([1,2,3]));
+        Assert.AreEqual(-1, solutionMath.SmallestIndex([1, 2, 3]));
+    }
+
+    [TestMethod]
+    public void TestPivotInteger()
+    {
+        SolutionMath solutionMath = new();
+        Assert.AreEqual(6, solutionMath.PivotInteger(8));
+        Assert.AreEqual(1, solutionMath.PivotInteger(1));
+        Assert.AreEqual(-1, solutionMath.PivotInteger(4));
     }
 }

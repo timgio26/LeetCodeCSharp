@@ -1,8 +1,3 @@
-using System;
-using System.IO.Pipelines;
-using System.Runtime.Serialization;
-using System.Text;
-
 namespace LeetCode.src;
 
 public class SolutionString
@@ -424,6 +419,75 @@ public class SolutionString
             if (commands[i] == "LEFT") { pos -= 1; continue; }
         }
         return pos;
+    }
+
+    public int CountAsterisks(string s)
+    {
+        //2315
+        bool count = true;
+        int countNum = 0;
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (s[i] == '|') { count = !count; }
+            if (s[i] == '*' && count) { countNum++; }
+        }
+        return countNum;
+    }
+
+    public bool CheckIfPangram(string sentence)
+    {
+        //1832
+        return sentence.ToCharArray().ToHashSet().Count == 26 ? true : false;
+    }
+
+    public IList<string> CellsInRange(string s)
+    {
+        //2194
+        List<string> strings = new();
+        char col = s[0];
+        while (col <= s[3])
+        {
+            char row = s[1];
+            while (row <= s[4])
+            {
+                strings.Add($"{col}{row++}");
+            }
+            col++;
+        }
+        return strings;
+    }
+
+    public string SortSentence(string s)
+    {
+        //1859
+        // can be improved using fixed length array
+        string[] strings = s.Split(' ');
+        SortedDictionary<char, string> keyValuePairs = new();
+        string result = "";
+        for (int i = 0; i < strings.Length; i++)
+        {
+            keyValuePairs.Add(strings[i][strings[i].Length - 1], strings[i][..(strings[i].Length - 1)]);
+        }
+        foreach (var i in keyValuePairs)
+        {
+            result += i.Value;
+            if (i.Key.ToString() != strings.Length.ToString()) { result += " "; }
+        }
+        return result;
+    }
+
+    public string SortSentenceV2(string s)
+    {
+        //1859
+        string[] strings = s.Split(' ');
+        string[] sorted = new string[strings.Length];
+        for (int i = 0; i < strings.Length; i++)
+        {
+            int pos = strings[i][strings[i].Length] - '0';
+            sorted[pos - 1] = strings[i][..^1];
+        }
+
+        return string.Join(" ", sorted);
     }
 }
 
