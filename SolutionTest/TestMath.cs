@@ -164,4 +164,12 @@ public class TestMath
         Assert.AreEqual(1, solutionMath.PivotInteger(1));
         Assert.AreEqual(-1, solutionMath.PivotInteger(4));
     }
+
+    [TestMethod]
+    public void TestIsPowerOfTwo()
+    {
+        SolutionMath solutionMath = new();
+        Assert.IsTrue(solutionMath.IsPowerOfTwo(1));
+        Assert.IsTrue(solutionMath.IsPowerOfTwo(536870912));
+    }
 }

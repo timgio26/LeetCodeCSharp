@@ -223,4 +223,28 @@ public class TestString
         SolutionString solutionString = new();
         Assert.AreEqual("This is a sentence", solutionString.SortSentence("is2 sentence4 This1 a3"));
     }
+
+    [TestMethod]
+    public void TestClearDigits()
+    {
+        SolutionString solutionString = new();
+        Assert.AreEqual("abc", solutionString.ClearDigits("abc"));
+        Assert.AreEqual("", solutionString.ClearDigits("cb34"));
+    }
+
+    [TestMethod]
+    public void TestReplaceDigits()
+    {
+        SolutionString solutionString = new();
+        Assert.AreEqual("abcdef", solutionString.ReplaceDigits("a1c1e1"));
+        Assert.AreEqual("abbdcfdhe", solutionString.ReplaceDigits("a1b2c3d4e"));
+    }
+
+    [TestMethod]
+    public void TestMergeAlternately()
+    {
+        SolutionString solutionString = new();
+        Assert.AreEqual("apbqrs", solutionString.MergeAlternately("ab", "pqrs"));
+        Assert.AreEqual("apbqcd", solutionString.MergeAlternately("abcd", "pq"));
+    }
 }

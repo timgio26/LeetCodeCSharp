@@ -8,7 +8,12 @@ using LeetCode.src;
 // System.Console.WriteLine(mySolution.InsertGreatestCommonDivisors(node1));
 
 SolutionMath mySolution = new();
+// mySolution.IsPowerOfTwo(1);
+// System.Console.WriteLine(Math.Log(536870912, 2).ToString().Contains('.'));
 
+char a = 'a';
+// a++;
+System.Console.WriteLine(a+1);
 
 
 

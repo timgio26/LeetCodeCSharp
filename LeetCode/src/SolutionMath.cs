@@ -324,7 +324,7 @@ public class SolutionMath
     public int PivotInteger(int n)
     {
         //2485 triangular numbers
-        int all = n * (n + 1)/2;
+        int all = n * (n + 1) / 2;
         for (int i = 1; i <= n; i++)
         {
             int left = i * (i + 1) / 2;
@@ -334,8 +334,15 @@ public class SolutionMath
         }
         return -1;
     }
-
-    
-
-    
+    public bool IsPowerOfTwo(int n)
+    {
+        //231 can be improved using loop /=2
+        int init = 0;
+        while (Math.Pow(2, init) <= n)
+        {
+            if (Math.Pow(2, init) == n) { return true; }
+            init++;
+        }
+        return false;
+    }
 }

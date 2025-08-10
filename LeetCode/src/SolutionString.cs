@@ -489,5 +489,64 @@ public class SolutionString
 
         return string.Join(" ", sorted);
     }
+
+    public void ReverseString(char[] s)
+    {
+        //344
+        int left = 0, right = s.Length - 1;
+        while (left < right)
+        {
+            char tempLeft = s[left];
+            s[left] = s[right];
+            s[right] = tempLeft;
+            left++; right--;
+        }
+    }
+
+    public string ClearDigits(string s)
+    {
+        //3174
+        List<char> chars = [];
+        for (int i = 0; i < s.Length; i++)
+        {
+            // if (int.TryParse(s[i].ToString(), out int number)) { chars.RemoveAt(chars.Count - 1); continue; }
+            if (char.IsDigit(s[i])) { chars.RemoveAt(chars.Count - 1); continue; }
+            chars.Add(s[i]);
+        }
+        return string.Concat(chars);
+    }
+
+    public string ReplaceDigits(string s)
+    {
+        //1844
+        char[] chars = s.ToCharArray();
+        for (int i = 0; i < chars.Length; i++)
+        {
+            if (i % 2 != 0)
+            {
+                int shift = chars[i] - '0';
+                char alph = chars[i - 1];
+                for (int j = 0; j < shift; j++)
+                {
+                    alph++;
+                }
+                chars[i] = alph;
+            }
+        }
+        return string.Concat(chars);
+    }
+
+    public string MergeAlternately(string word1, string word2)
+    {
+        //1768
+        List<char> chars = [];
+        int max = Math.Max(word1.Length, word2.Length);
+        for (int i = 0; i < max; i++)
+        {
+            if (i < word1.Length) { chars.Add(word1[i]); }
+            if (i < word2.Length) { chars.Add(word2[i]); }
+        }
+        return string.Concat(chars);
+    }
 }
 
