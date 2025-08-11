@@ -548,5 +548,34 @@ public class SolutionString
         }
         return string.Concat(chars);
     }
+
+    public bool IsBalanced(string num)
+    {
+        //3340
+        int a = 0, b = 0;
+        for (int i = 0; i < num.Length; i++)
+        {
+            if (i % 2 == 0) { a += num[i] - '0'; continue; }
+            b += num[i] - '0';
+        }
+        return a == b;
+    }
+
+    public int MaximumValue2496(string[] strs)
+    {
+        //2496
+        int max = 0;
+        for (int i = 0; i < strs.Length; i++)
+        {
+            int localVal = 0;
+            for (int j = 0; j < strs[i].Length; j++)
+            {
+                if (!Char.IsDigit(strs[i][j])) { localVal = strs[i].Length; break; }
+                if (j == strs[i].Length - 1) { localVal = int.Parse(strs[i]); }
+            }
+            if (localVal > max) { max = localVal; }
+        }
+        return max;
+    }
 }
 

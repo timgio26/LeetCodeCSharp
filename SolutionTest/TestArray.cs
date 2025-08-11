@@ -579,6 +579,18 @@ public sealed class TestArray
         expect = [3];
         CollectionAssert.AreEqual(expect, (List<int>)solution.TargetIndices([1, 2, 5, 2, 3], 3));
         expect = [4];
-        CollectionAssert.AreEqual(expect, (List<int>)solution.TargetIndices([1,2,5,2,3], 5));
+        CollectionAssert.AreEqual(expect, (List<int>)solution.TargetIndices([1, 2, 5, 2, 3], 5));
+    }
+
+    [TestMethod]
+    public void TestDecrypt()
+    {
+        Solution solution = new();
+        int[] expect = [12, 10, 16, 13];
+        CollectionAssert.AreEqual(expect, solution.Decrypt([5, 7, 1, 4], 3));
+        expect = [0, 0, 0, 0];
+        CollectionAssert.AreEqual(expect, solution.Decrypt([5, 7, 1, 4], 0));
+        expect = [12, 5, 6, 13];
+        CollectionAssert.AreEqual(expect, solution.Decrypt([2, 4, 9, 3], -2));
     }
 }

@@ -247,4 +247,11 @@ public class TestString
         Assert.AreEqual("apbqrs", solutionString.MergeAlternately("ab", "pqrs"));
         Assert.AreEqual("apbqcd", solutionString.MergeAlternately("abcd", "pq"));
     }
+
+    [TestMethod]
+    public void TestMaximumValue()
+    {
+        SolutionString solutionString = new();
+        Assert.AreEqual(5, solutionString.MaximumValue2496(["alic3", "bob", "3", "4", "00000"]));
+    }
 }

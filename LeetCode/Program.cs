@@ -7,13 +7,9 @@ using LeetCode.src;
 // ListNode node1 = new ListNode(10, node2);
 // System.Console.WriteLine(mySolution.InsertGreatestCommonDivisors(node1));
 
-SolutionMath mySolution = new();
+Solution mySolution = new();
 // mySolution.IsPowerOfTwo(1);
-// System.Console.WriteLine(Math.Log(536870912, 2).ToString().Contains('.'));
-
-char a = 'a';
-// a++;
-System.Console.WriteLine(a+1);
+mySolution.Decrypt([5, 7, 1, 4], 3);
 
 
 

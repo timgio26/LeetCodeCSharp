@@ -102,7 +102,16 @@ public class TestHashTable
     {
         SolutionHashTable mySol = new();
         Assert.IsTrue(mySol.UniqueOccurrences([1, 2, 2, 1, 1, 3]));
-        Assert.IsFalse(mySol.UniqueOccurrences([1,2]));
-        Assert.IsTrue(mySol.UniqueOccurrences([-3,0,1,-3,1,1,1,-3,10,0]));
+        Assert.IsFalse(mySol.UniqueOccurrences([1, 2]));
+        Assert.IsTrue(mySol.UniqueOccurrences([-3, 0, 1, -3, 1, 1, 1, -3, 10, 0]));
+    }
+
+    [TestMethod]
+    public void TestCountPoints()
+    {
+        SolutionHashTable sol = new();
+        Assert.AreEqual(1, sol.CountPoints("B0B6G0R6R0R6G9"));
+        Assert.AreEqual(1, sol.CountPoints("B0R0G0R9R0B0G0"));
+        Assert.AreEqual(0, sol.CountPoints("G4"));
     }
 }

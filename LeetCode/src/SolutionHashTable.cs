@@ -281,4 +281,21 @@ public class SolutionHashTable
         }
         return ints.Count() == keyValuePairs.Count;
     }
+
+    public int CountPoints(string rings)
+    {
+        //2103
+        Dictionary<char, HashSet<char>> keyValuePairs = new();
+        int count = 0;
+        for (int i = 1; i < rings.Length; i += 2)
+        {
+            if (!keyValuePairs.ContainsKey(rings[i])) { keyValuePairs.Add(rings[i], []); }
+            keyValuePairs[rings[i]].Add(rings[i - 1]);
+        }
+        foreach (var i in keyValuePairs)
+        {
+            if (i.Value.Count == 3) { count++; }
+        }
+        return count;
+    }
 }

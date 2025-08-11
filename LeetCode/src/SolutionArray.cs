@@ -1090,4 +1090,60 @@ public class Solution
         }
         return [onlyIn1, onlyIn2];
     }
+
+    public string DestCity(IList<IList<string>> paths)
+    {
+        //1436
+        List<string> from = [], dest = [];
+        for (int i = 0; i < paths.Count; i++)
+        {
+            from.Add(paths[i][0]); dest.Add(paths[i][1]);
+        }
+        for (int i = 0; i < dest.Count; i++)
+        {
+            if (!from.Contains(dest[i])) { return dest[i]; }
+        }
+        return "";
+    }
+    public bool DivideArray(int[] nums)
+    {
+        //2206
+        List<int> ints = [];
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (!ints.Contains(nums[i])) { ints.Add(nums[i]); continue; }
+            ints.RemoveAt(ints.IndexOf(nums[i]));
+        }
+        return ints.Count == 0;
+    }
+
+    public int[] Decrypt(int[] code, int k)
+    {
+        //1652 bisa improve pake (i + j) % n
+        int len = code.Length;
+        int[] ints = new int[len];
+        for (int i = 0; i < code.Length; i++)
+        {
+            int sum = 0;
+            if (k == 0) { code[i] = 0; }
+            if (k < 0)
+            {
+                for (int j = k; j < 0; j++)
+                {
+                    sum += code[i + j < 0 ? i + j + len : i + j];
+                }
+                // code[i] = sum;
+            }
+            if (k > 0)
+            {
+                for (int j = k; j > 0; j--)
+                {
+                    sum += code[i + j > len - 1 ? i + j - len : i + j];
+                }
+            }
+            ints[i] = sum;
+            // System.Console.WriteLine(sum);
+        }
+        return ints;
+    }
 }

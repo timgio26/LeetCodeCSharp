@@ -345,4 +345,16 @@ public class SolutionMath
         }
         return false;
     }
+
+    public int SumOfTheDigitsOfHarshadNumber(int x)
+    {
+        //3099
+        int tempX = x, sum = 0;
+        while (tempX > 0)
+        {
+            sum += tempX % 10;
+            tempX /= 10;
+        }
+        return x % sum == 0 ? sum : -1;
+    }
 }
