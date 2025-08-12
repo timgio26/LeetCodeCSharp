@@ -10,6 +10,12 @@ using LeetCode.src;
 Solution mySolution = new();
 // mySolution.IsPowerOfTwo(1);
 mySolution.Decrypt([5, 7, 1, 4], 3);
+int[] ints1 = [1, 2, 3, 4];
+// Array.Reverse(ints1);
+
+Queue<int> ints = new Queue<int>(ints1);
+// ints.Enqueue(9);
+System.Console.WriteLine(1%3); //1
 
 
 

@@ -1146,4 +1146,105 @@ public class Solution
         }
         return ints;
     }
+
+    public int[] SumZero(int n)
+    {
+        //1304
+        int[] ints = new int[n];
+        int len = n % 2 == 0 ? n : n - 1;
+        int val = 1;
+        for (int i = 0; i < len; i++)
+        {
+            if (i % 2 == 1) { ints[i] = val * -1; val++; continue; }
+            ints[i] = val;
+        }
+
+        return ints;
+    }
+
+    public int CountStudents(int[] students, int[] sandwiches)
+    {
+        //1700
+        // Instead of simulating the queue, we can:
+        // - Count how many students want each type of sandwich (0 or 1).
+        // - Iterate through the sandwiches.
+        // - If no student wants the current sandwich, stop.
+
+        Queue<int> studentQ = new Queue<int>(students);
+        int sandwichCount = 0;
+        for (int count = 0; count < studentQ.Count && sandwichCount < sandwiches.Length;)
+        {
+            if (sandwiches[sandwichCount] == studentQ.First())
+            {
+                sandwichCount++;
+                studentQ.Dequeue();
+                count = 0;
+            }
+            else
+            {
+                studentQ.Enqueue(studentQ.First());
+                studentQ.Dequeue();
+                count++;
+            }
+
+        }
+        return studentQ.Count();
+    }
+
+    public int[] SortByBits(int[] arr)
+    {
+        //1356
+        // Use a custom comparer that:
+        // - Counts the number of 1s in binary (efficiently)
+        // - Sorts by bit count, then by value
+
+        Array.Sort(arr);
+        SortedDictionary<int, List<int>> keyValuePairs = new();
+        List<int> result = new();
+        for (int i = 0; i < arr.Length; i++)
+        {
+            string binInt = Convert.ToString(arr[i], 2);
+            int count = 0;
+            for (int j = 0; j < binInt.Length; j++)
+            {
+                if (binInt[j] == '1') { count++; }
+            }
+            if (!keyValuePairs.ContainsKey(count)) { keyValuePairs.Add(count, []); }
+            keyValuePairs[count].Add(arr[i]);
+        }
+        foreach (var i in keyValuePairs)
+        {
+            result.AddRange(i.Value);
+        }
+        return result.ToArray();
+    }
+
+    public int MaxAdjacentDistance(int[] nums)
+    {
+        //3423
+        int max = int.MinValue;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            int val = Math.Abs(nums[(i + 1) % nums.Length] - nums[i]);
+            if (val > max) { max = val; }
+        }
+        return max;
+    }
+
+    public int[] DeckRevealedIncreasing(int[] deck)
+    {
+        //950
+        Array.Sort(deck, (a, b) => b.CompareTo(a));
+        Queue<int> ints2 = new();
+        for (int i = 0; i < deck.Length; i++)
+        {
+            if (ints2.Count > 0)
+            {
+                int deq = ints2.Dequeue();
+                ints2.Enqueue(deq);
+            }
+            ints2.Enqueue(deck[i]);
+        }
+        return ints2.Reverse().ToArray();
+    }
 }

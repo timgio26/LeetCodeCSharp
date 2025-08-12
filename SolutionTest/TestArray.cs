@@ -593,4 +593,48 @@ public sealed class TestArray
         expect = [12, 5, 6, 13];
         CollectionAssert.AreEqual(expect, solution.Decrypt([2, 4, 9, 3], -2));
     }
+
+    [TestMethod]
+    public void TestSumZero()
+    {
+        Solution solution = new();
+        int[] expect = [0];
+        CollectionAssert.AreEquivalent(expect, solution.SumZero(1));
+        expect = [1, -1];
+        CollectionAssert.AreEquivalent(expect, solution.SumZero(2));
+        expect = [1, -1, 0];
+        CollectionAssert.AreEquivalent(expect, solution.SumZero(3));
+
+    }
+
+    [TestMethod]
+    public void TestCountStudents()
+    {
+        Solution solution = new();
+        Assert.AreEqual(0, solution.CountStudents([1, 1, 0, 0], [0, 1, 0, 1]));
+        Assert.AreEqual(3, solution.CountStudents([1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 1]));
+    }
+
+    [TestMethod]
+    public void TestSortByBits()
+    {
+        Solution solution = new();
+        int[] expect = [0, 1, 2, 4, 8, 3, 5, 6, 7];
+        CollectionAssert.AreEqual(expect, solution.SortByBits([0, 1, 2, 3, 4, 5, 6, 7, 8]));
+    }
+
+    [TestMethod]
+    public void TestMaxAdjacentDistance()
+    {
+        Solution solution = new();
+        Assert.AreEqual(3, solution.MaxAdjacentDistance([1, 2, 4]));
+    }
+
+    [TestMethod]
+    public void TestDeckRevealedIncreasing()
+    {
+        Solution solution = new();
+        int[] result = [2, 13, 3, 11, 5, 17, 7];
+        CollectionAssert.AreEqual(result, solution.DeckRevealedIncreasing([17, 13, 11, 2, 3, 5, 7]));
+    }
 }
