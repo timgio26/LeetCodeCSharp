@@ -357,4 +357,15 @@ public class SolutionMath
         }
         return x % sum == 0 ? sum : -1;
     }
+
+    public bool IsPowerOfThree(int n) {
+        //326
+        while (n >= 1)
+        {
+            if (n == 1) { return true; }
+            if (n % 3 != 0) { break; }
+            n /= 3;
+        }
+        return false;
+    }
 }

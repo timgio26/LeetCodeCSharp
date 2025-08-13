@@ -1247,4 +1247,80 @@ public class Solution
         }
         return ints2.Reverse().ToArray();
     }
+
+    public int SingleNumber(int[] nums)
+    {
+        //136
+        List<int> ints2 = new();
+        int sum = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (!ints2.Contains(nums[i])) { ints2.Add(nums[i]); sum += nums[i]; continue; }
+            sum -= nums[i];
+        }
+        return sum;
+    }
+
+    public int[] NextGreaterElement(int[] nums1, int[] nums2)
+    {
+        //496
+        int[] res = new int[nums1.Length];
+        Dictionary<int, int> valIdx = new();
+        for (int i = 0; i < nums2.Length; i++)
+        {
+            valIdx.Add(nums2[i], i);
+        }
+        for (int i = 0; i < res.Length; i++)
+        {
+            for (int j = valIdx[nums1[i]]; j < nums2.Length; j++)
+            {
+                if (nums2[j] > nums1[i]) { res[i] = nums2[j]; break; }
+                if (j == nums2.Length - 1)
+                {
+                    { res[i] = -1; }
+                }
+            }
+        }
+        return res;
+    }
+
+    public int CalPoints(string[] operations)
+    {
+        //682
+        List<int> result = new();
+        for (int i = 0; i < operations.Length; i++)
+        {
+            if (int.TryParse(operations[i], out int num))
+            {
+                result.Add(num);
+            }
+            else
+            {
+                if (operations[i] == "C")
+                {
+                    result.RemoveAt(result.Count - 1);
+                }
+                else if (operations[i] == "D")
+                {
+                    result.Add(result[result.Count - 1] * 2);
+                }
+                else
+                {
+                    result.Add(result[result.Count - 1] + result[result.Count - 2]);
+                }
+            }
+        }
+        return result.Sum();
+    }
+
+    public int CountTestedDevices(int[] batteryPercentages)
+    {
+        //2960
+        int count = 0;
+        for (int i = 0; i < batteryPercentages.Length; i++)
+        {
+            if (batteryPercentages[i] > count) { count++; }
+        }
+        return count;
+    }
 }

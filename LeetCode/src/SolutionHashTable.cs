@@ -298,4 +298,22 @@ public class SolutionHashTable
         }
         return count;
     }
+
+    public int[] FindThePrefixCommonArray(int[] A, int[] B)
+    {
+        //2657
+        // can be improved
+        int[] ints3 = new int[A.Length];
+        for (int i = 0; i < A.Length; i++)
+        {
+            HashSet<int> ints2 = new();
+            for (int j = 0; j <i+1; j++)
+            {
+                ints2.Add(A[j]);
+                ints2.Add(B[j]);
+            }
+            ints3[i] = (i + 1) * 2 - ints2.Count;
+        }
+        return ints3;
+    }
 }

@@ -637,4 +637,26 @@ public sealed class TestArray
         int[] result = [2, 13, 3, 11, 5, 17, 7];
         CollectionAssert.AreEqual(result, solution.DeckRevealedIncreasing([17, 13, 11, 2, 3, 5, 7]));
     }
+    [TestMethod]
+    public void TestSingleNumber()
+    {
+        Solution solution = new();
+        Assert.AreEqual(4, solution.SingleNumber([4, 1, 2, 1, 2]));
+        Assert.AreEqual(1, solution.SingleNumber([2, 2, 1]));
+    }
+
+    [TestMethod]
+    public void TestNextGreaterElement()
+    {
+        Solution solution = new();
+        int[] expect = [-1, 3, -1];
+        CollectionAssert.AreEqual(expect, solution.NextGreaterElement([4, 1, 2], [1, 3, 4, 2]));
+    }
+
+    [TestMethod]
+    public void TestCalPoints()
+    {
+        Solution solution = new();
+        Assert.AreEqual(27, solution.CalPoints(["5", "-2", "4", "C", "D", "9", "+", "+"]));
+    }
 }

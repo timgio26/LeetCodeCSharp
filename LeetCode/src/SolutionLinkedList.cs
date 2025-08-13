@@ -47,4 +47,17 @@ public class SolutionLinkedList
         }
         return head;
     }
+
+    public int GetDecimalValue(ListNode head)
+    {
+        //1290
+        List<string> ints2 = [];
+        while (head != null)
+        {
+            ints2.Add(head.val.ToString());
+            head = head.next;
+        }
+        string binStr = string.Concat(ints2);
+        return Convert.ToInt32(binStr, 2);
+    }
 }

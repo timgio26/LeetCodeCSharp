@@ -114,4 +114,12 @@ public class TestHashTable
         Assert.AreEqual(1, sol.CountPoints("B0R0G0R9R0B0G0"));
         Assert.AreEqual(0, sol.CountPoints("G4"));
     }
+
+    [TestMethod]
+    public void TestFindThePrefixCommonArray()
+    {
+        SolutionHashTable sol = new();
+        int[] expect = [0, 2, 3, 4];
+        CollectionAssert.AreEqual(expect, sol.FindThePrefixCommonArray([1, 3, 2, 4], [3, 1, 2, 4]));
+    }
 }

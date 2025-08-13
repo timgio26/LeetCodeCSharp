@@ -2,20 +2,25 @@
 using LeetCode.src;
 
 // SolutionLinkedList mySolution = new();
-// ListNode node3 = new ListNode(18);
-// ListNode node2 = new ListNode(15, node3);
-// ListNode node1 = new ListNode(10, node2);
-// System.Console.WriteLine(mySolution.InsertGreatestCommonDivisors(node1));
+// ListNode node3 = new ListNode(1);
+// ListNode node2 = new ListNode(0, node3);
+// ListNode node1 = new ListNode(1, node2);
+// System.Console.WriteLine(mySolution.GetDecimalValue(node1));
 
-Solution mySolution = new();
-// mySolution.IsPowerOfTwo(1);
-mySolution.Decrypt([5, 7, 1, 4], 3);
-int[] ints1 = [1, 2, 3, 4];
-// Array.Reverse(ints1);
+// Solution mySolution = new();
+// // mySolution.IsPowerOfTwo(1);
+// mySolution.Decrypt([5, 7, 1, 4], 3);
+// int[] ints1 = [1, 2, 3, 4];
+// // Array.Reverse(ints1);
 
-Queue<int> ints = new Queue<int>(ints1);
-// ints.Enqueue(9);
-System.Console.WriteLine(1%3); //1
+// Queue<int> ints = new Queue<int>(ints1);
+// // ints.Enqueue(9);
+// System.Console.WriteLine(ints1[0..1].Length); //1
+// System.Console.WriteLine(Convert.ToInt32("101", 2));
+
+List<int> ints = [1, 2, 3, 4];
+System.Console.WriteLine(ints[1]);
+
 
 
 

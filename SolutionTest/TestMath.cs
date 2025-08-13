@@ -172,4 +172,13 @@ public class TestMath
         Assert.IsTrue(solutionMath.IsPowerOfTwo(1));
         Assert.IsTrue(solutionMath.IsPowerOfTwo(536870912));
     }
+
+    [TestMethod]
+    public void testIsPowerOfThree()
+    {
+        SolutionMath solutionMath = new();
+        Assert.IsTrue(solutionMath.IsPowerOfThree(27));
+        Assert.IsFalse(solutionMath.IsPowerOfThree(45));
+        Assert.IsTrue(solutionMath.IsPowerOfThree(1));
+    }
 }

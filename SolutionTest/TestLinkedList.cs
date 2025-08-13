@@ -20,4 +20,14 @@ public class TestLinkedList
         Assert.AreEqual(1, result.next.next.next.next.next.val);
         Assert.AreEqual(3, result.next.next.next.next.next.next.val);
     }
+
+    [TestMethod]
+    public void TestGetDecimalValue()
+    {
+        SolutionLinkedList mySol = new();
+        ListNode node3 = new ListNode(1);
+        ListNode node2 = new ListNode(0, node3);
+        ListNode node1 = new ListNode(1, node2);
+        Assert.AreEqual(5, mySol.GetDecimalValue(node1));
+    }
 }
