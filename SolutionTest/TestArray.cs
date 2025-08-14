@@ -659,4 +659,24 @@ public sealed class TestArray
         Solution solution = new();
         Assert.AreEqual(27, solution.CalPoints(["5", "-2", "4", "C", "D", "9", "+", "+"]));
     }
+
+    [TestMethod]
+    public void TestValidMountainArray()
+    {
+        Solution solution = new();
+        Assert.IsFalse(solution.ValidMountainArray([2, 1]));
+        Assert.IsFalse(solution.ValidMountainArray([3, 5, 5]));
+        Assert.IsTrue(solution.ValidMountainArray([0, 3, 2, 1]));
+    }
+
+    [TestMethod]
+
+    public void TestCanPlaceFlowers()
+    {
+        Solution solution = new();
+        Assert.IsTrue(solution.CanPlaceFlowers([0, 0, 1, 0, 0, 0, 0, 1], 2));
+        Assert.IsTrue(solution.CanPlaceFlowers([0, 0, 1, 0, 0, 0, 0, 1], 1));
+        Assert.IsFalse(solution.CanPlaceFlowers([0, 0, 1, 0, 0, 0, 0, 1], 3));
+    }
+
 }

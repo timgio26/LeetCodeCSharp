@@ -254,4 +254,13 @@ public class TestString
         SolutionString solutionString = new();
         Assert.AreEqual(5, solutionString.MaximumValue2496(["alic3", "bob", "3", "4", "00000"]));
     }
+
+    [TestMethod]
+    public void TestLargestGoodInteger()
+    {
+        SolutionString solutionString = new();
+        Assert.AreEqual("777", solutionString.LargestGoodInteger("6777133339"));
+        Assert.AreEqual("000", solutionString.LargestGoodInteger("2300019"));
+        Assert.AreEqual("", solutionString.LargestGoodInteger("42352338"));
+    }
 }

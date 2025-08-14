@@ -1323,4 +1323,131 @@ public class Solution
         }
         return count;
     }
+
+    public bool CanBeEqual(int[] target, int[] arr)
+    {
+        //1460
+        Array.Sort(target);
+        Array.Sort(arr);
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (target[i] != arr[i]) { return false; }
+        }
+        return true;
+    }
+
+    public IList<IList<int>> MinimumAbsDifference(int[] arr)
+    {
+        //1200
+        Array.Sort(arr);
+        int min = int.MaxValue;
+        List<List<int>> result = [];
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            int diff = arr[i + 1] - arr[i];
+            if (diff < min)
+            {
+                result.Clear();
+                result.Add([arr[i], arr[i + 1]]);
+                min = diff;
+            }
+            else if (diff == min) { result.Add([arr[i], arr[i + 1]]); }
+        }
+        return result.ToArray();
+    }
+
+    public IList<IList<int>> Generate(int numRows)
+    {
+        //118
+        List<int[]> ints1 = new();
+        for (int i = 1; i <= numRows; i++)
+        {
+            int[] ints2 = new int[i];
+            for (int j = 0; j < ints2.Length; j++)
+            {
+                if (j == 0 || j == ints2.Length - 1) { ints2[j] = 1; continue; }
+                ints2[j] = ints1[i - 2][j - 1] + ints1[i - 2][j];
+            }
+            ints1.Add(ints2);
+        }
+        return ints1.ToArray();
+    }
+
+    public bool ValidMountainArray(int[] arr)
+    {
+        //941
+        int peakLeft = 0;
+        int peakRight = arr.Length - 1;
+        for (int i = peakLeft; i < arr.Length - 1; i++)
+        {
+            if (arr[i + 1] <= arr[i]) { peakLeft = i; break; }
+        }
+        for (int i = peakRight; i > 0; i--)
+        {
+            if (arr[i - 1] <= arr[i]) { peakRight = i; break; }
+        }
+        return peakLeft > 0 && peakLeft == peakRight && peakRight < arr.Length - 1;
+
+    }
+
+    public bool CanPlaceFlowers(int[] flowerbed, int n)
+    {
+        //605
+        int count = 0;
+        int len = flowerbed.Length;
+        for (int i = 0; i < len; i++)
+        {
+            if (flowerbed[i] == 1) { continue; }
+            if (i > 0) { if (flowerbed[i - 1] == 1) { continue; } }
+            if (i < len - 1) { if (flowerbed[i + 1] == 1) { continue; } }
+            flowerbed[i] = 1;
+            count++;
+        }
+        return count >= n;
+    }
+
+    public int ThirdMax(int[] nums)
+    {
+        //414 can be improved
+        Array.Sort(nums);
+        HashSet<int> numSet = new(nums);
+        if (numSet.Count < 3) { return numSet.Last(); }
+        nums = numSet.ToArray();
+        return nums[nums.Length - 3];
+    }
+
+    public IList<int> FindKDistantIndices(int[] nums, int key, int k)
+    {
+        //2200
+        List<int> keyIdx = [];
+        List<int> result = [];
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] == key) { keyIdx.Add(i); }
+        }
+        for (int i = 0; i < nums.Length; i++)
+        {
+            foreach (int j in keyIdx)
+            {
+                if (Math.Abs(i - j) <= k) { result.Add(i); break; }
+            }
+        }
+        return result;
+    }
+
+    public int CountGoodRectangles(int[][] rectangles)
+    {
+        //1725
+        int count = 0;
+        int largest = int.MinValue;
+
+        for (int i = 0; i < rectangles.Length; i++)
+        {
+            int localmin = Math.Min(rectangles[i][0], rectangles[i][1]);
+            if (localmin > largest) { largest = localmin; count = 1; continue; }
+            if (localmin == largest) { count++; }
+        }
+        return count;
+    }
+
 }

@@ -7,7 +7,8 @@ using LeetCode.src;
 // ListNode node1 = new ListNode(1, node2);
 // System.Console.WriteLine(mySolution.GetDecimalValue(node1));
 
-// Solution mySolution = new();
+Solution mySolution = new();
+// mySolution.ValidMountainArray([0, 3, 2, 1]);
 // // mySolution.IsPowerOfTwo(1);
 // mySolution.Decrypt([5, 7, 1, 4], 3);
 // int[] ints1 = [1, 2, 3, 4];
@@ -19,7 +20,7 @@ using LeetCode.src;
 // System.Console.WriteLine(Convert.ToInt32("101", 2));
 
 List<int> ints = [1, 2, 3, 4];
-System.Console.WriteLine(ints[1]);
+System.Console.WriteLine("ABABCD"[0..1]);
 
 
 

@@ -122,4 +122,12 @@ public class TestHashTable
         int[] expect = [0, 2, 3, 4];
         CollectionAssert.AreEqual(expect, sol.FindThePrefixCommonArray([1, 3, 2, 4], [3, 1, 2, 4]));
     }
+
+    [TestMethod]
+    public void TestHasGroupsSizeX()
+    {
+        SolutionHashTable sol = new();
+        Assert.IsTrue(sol.HasGroupsSizeX([1, 2, 3, 4, 4, 3, 2, 1]));
+        Assert.IsFalse(sol.HasGroupsSizeX([1,1,1,2,2,2,3,3]));
+    }
 }

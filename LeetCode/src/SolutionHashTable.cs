@@ -307,7 +307,7 @@ public class SolutionHashTable
         for (int i = 0; i < A.Length; i++)
         {
             HashSet<int> ints2 = new();
-            for (int j = 0; j <i+1; j++)
+            for (int j = 0; j < i + 1; j++)
             {
                 ints2.Add(A[j]);
                 ints2.Add(B[j]);
@@ -315,5 +315,23 @@ public class SolutionHashTable
             ints3[i] = (i + 1) * 2 - ints2.Count;
         }
         return ints3;
+    }
+    
+    public bool HasGroupsSizeX(int[] deck)
+    {
+        //still failed 914
+        Dictionary<int, List<int>> keyValuePairs = new();
+        for (int i = 0; i < deck.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(deck[i])) { keyValuePairs.Add(deck[i], []); }
+            keyValuePairs[deck[i]].Add(deck[i]);
+        }
+        int len = 0;
+        foreach (var i in keyValuePairs)
+        {
+            if (len == 0) { len = i.Value.Count(); continue; }
+            if (i.Value.Count != len) { return false; }
+        }
+        return true;
     }
 }

@@ -577,5 +577,37 @@ public class SolutionString
         }
         return max;
     }
+
+    public int MinLength(string s)
+    {
+        //2696
+        // can improve use stack
+        while (s.IndexOf("AB") > -1 || s.IndexOf("CD") > -1)
+        {
+
+            s = s.Replace("AB", "");
+            s = s.Replace("CD", "");
+        }
+        return s.Length;
+    }
+
+    public string LargestGoodInteger(string num)
+    {
+        //2264
+        string result = "";
+        int resultInt = int.MinValue;
+        for (int i = 0; i < num.Length - 2; i++)
+        {
+            string subStr = num[i..(i + 3)];
+            int count = subStr.ToHashSet().Count();
+            int subStrInt = int.Parse(subStr);
+            if (subStrInt > resultInt && count == 1)
+            {
+                resultInt = subStrInt;
+                result = subStr;
+            }
+        }
+        return result;
+    }
 }
 
