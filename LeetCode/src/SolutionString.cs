@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace LeetCode.src;
 
 public class SolutionString
@@ -608,6 +610,37 @@ public class SolutionString
             }
         }
         return result;
+    }
+
+    public int CountPrefixSuffixPairs(string[] words)
+    {
+        //3042
+        int count = 0;
+        for (int i = 0; i < words.Length - 1; i++)
+        {
+            int lenI = words[i].Length;
+            for (int j = i + 1; j < words.Length; j++)
+            {
+                int lenJ = words[j].Length;
+                if (lenI > lenJ) { continue; }
+                if (words[j][0..lenI] == words[i] && words[j][(lenJ - lenI)..lenJ] == words[i]) { count++; }
+
+            }
+        }
+        return count;
+    }
+
+    public string RemoveTrailingZeros(string num)
+    {
+        //2710
+        int end = num.Length - 1;
+        for (int i = end; i >= 0; i--)
+        {
+            if (num[i] != '0') { end = i; break; }
+            if(i==0){ end = -1; }
+        }
+        return num[0..(end + 1)];
+        
     }
 }
 

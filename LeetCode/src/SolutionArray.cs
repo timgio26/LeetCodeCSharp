@@ -1450,4 +1450,67 @@ public class Solution
         return count;
     }
 
+    public int CountCompleteDayPairs(int[] hours)
+    {
+        //3184
+        int count = 0;
+        for (int i = 0; i < hours.Length - 1; i++)
+        {
+            for (int j = i + 1; j < hours.Length; j++)
+            {
+                if ((hours[i] + hours[j]) % 24 == 0) { count++; }
+            }
+        }
+        return count;
+    }
+
+    public bool CanArrange(int[] arr, int k)
+    {
+        //1497 exceed time limit
+        HashSet<int> usedIdx = [];
+        int count = 0;
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            if (usedIdx.Contains(i)) { continue; }
+            for (int j = i + 1; j < arr.Length; j++)
+            {
+                if (usedIdx.Contains(j) || usedIdx.Contains(i)) { continue; }
+                if ((arr[i] + arr[j]) % k == 0) { usedIdx.Add(i); usedIdx.Add(j); count++; System.Console.WriteLine(i); System.Console.WriteLine(j); System.Console.WriteLine("=========="); }
+            }
+        }
+        return count == arr.Length / 2;
+    }
+
+    public int[] Intersection(int[] nums1, int[] nums2)
+    {
+        //349
+        List<int> ints = [];
+        HashSet<int> ints1 = new(nums1), ints2 = new(nums2);
+        int shortest = ints1.Count < ints2.Count ? 1 : 2;
+        if (shortest == 1)
+        {
+            foreach (var i in ints1)
+            {
+                if (ints2.Contains(i)) { ints.Add(i); }
+            }
+        }
+        else
+        {
+            foreach (var i in ints2)
+            {
+                if (ints1.Contains(i)) { ints.Add(i); }
+            }
+        }
+        return ints.ToArray();
+    }
+
+    public bool IsPowerOfFour(int n)
+    {
+        //342 recursive
+        int rem = n % 4;
+        if (n == 1 ) return true;
+        if (n <= 0 || rem != 0) return false;
+        return IsPowerOfFour(n / 4);
+    }
+
 }

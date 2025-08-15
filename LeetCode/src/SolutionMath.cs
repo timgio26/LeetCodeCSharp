@@ -358,7 +358,8 @@ public class SolutionMath
         return x % sum == 0 ? sum : -1;
     }
 
-    public bool IsPowerOfThree(int n) {
+    public bool IsPowerOfThree(int n)
+    {
         //326
         while (n >= 1)
         {
@@ -367,5 +368,44 @@ public class SolutionMath
             n /= 3;
         }
         return false;
+    }
+
+    public int CountSymmetricIntegers(int low, int high)
+    {
+        //2843
+        int count = 0;
+        for (int i = low; i <= high; i++)
+        {
+            int temp = i;
+            int numsDigits = i.ToString().Length;
+            if (numsDigits % 2 != 0) { continue; }
+            int left = 0;
+            int right = 0;
+            for (int j = 0; j < numsDigits / 2; j++)
+            {
+                right += temp % 10;
+                temp /= 10;
+            }
+            for (int j = 0; j < numsDigits / 2; j++)
+            {
+                left += temp % 10;
+                temp /= 10;
+            }
+            if (left == right) { count++; }
+        }
+        return count;
+    }
+
+    public bool IsSameAfterReversals(int num)
+    {
+        //2119 only false if there is leading 0
+        char[] numChar = num.ToString().ToCharArray();
+        Array.Reverse(numChar);
+        int numRevInt = Convert.ToInt32(string.Concat(numChar));
+
+        numChar = numRevInt.ToString().ToCharArray();
+        Array.Reverse(numChar);
+        numRevInt = Convert.ToInt32(string.Concat(numChar));
+        return num == numRevInt;
     }
 }

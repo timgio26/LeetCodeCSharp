@@ -181,4 +181,12 @@ public class TestMath
         Assert.IsFalse(solutionMath.IsPowerOfThree(45));
         Assert.IsTrue(solutionMath.IsPowerOfThree(1));
     }
+
+    [TestMethod]
+    public void TestCountSymmetricIntegers()
+    {
+        SolutionMath solutionMath = new();
+        Assert.AreEqual(9, solutionMath.CountSymmetricIntegers(1, 100));
+        Assert.AreEqual(4, solutionMath.CountSymmetricIntegers(1200, 1230));
+    }
 }

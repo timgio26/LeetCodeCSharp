@@ -679,4 +679,23 @@ public sealed class TestArray
         Assert.IsFalse(solution.CanPlaceFlowers([0, 0, 1, 0, 0, 0, 0, 1], 3));
     }
 
+    [TestMethod]
+    public void TestCanArrange()
+    {
+        Solution solution = new();
+        Assert.IsTrue(solution.CanArrange([1, 2, 3, 4, 5, 10, 6, 7, 8, 9], 5));
+        Assert.IsTrue(solution.CanArrange([1, 2, 3, 4, 5, 6], 7));
+        Assert.IsFalse(solution.CanArrange([2, 2, 2, 4], 4));
+    }
+
+    [TestMethod]
+    public void TestIsPowerOfFour()
+    {
+        Solution solution = new();
+        Assert.IsTrue(solution.IsPowerOfFour(16));
+        Assert.IsTrue(solution.IsPowerOfFour(1));
+        Assert.IsFalse(solution.IsPowerOfFour(5));
+        Assert.IsFalse(solution.IsPowerOfFour(-2147483648));
+    }
+
 }

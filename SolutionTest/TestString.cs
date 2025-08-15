@@ -263,4 +263,23 @@ public class TestString
         Assert.AreEqual("000", solutionString.LargestGoodInteger("2300019"));
         Assert.AreEqual("", solutionString.LargestGoodInteger("42352338"));
     }
+
+    [TestMethod]
+    public void TestCountPrefixSuffixPairs()
+    {
+        SolutionString solutionString = new();
+        Assert.AreEqual(4, solutionString.CountPrefixSuffixPairs(["a", "aba", "ababa", "aa"]));
+        Assert.AreEqual(2, solutionString.CountPrefixSuffixPairs(["pa", "papa", "ma", "mama"]));
+    }
+
+    [TestMethod]
+    public void TestRemoveTrailingZeros()
+    {
+        SolutionString solutionString = new();
+        Assert.AreEqual("512301", solutionString.RemoveTrailingZeros("51230100"));
+        Assert.AreEqual("123", solutionString.RemoveTrailingZeros("123"));
+        Assert.AreEqual("1", solutionString.RemoveTrailingZeros("1"));
+        Assert.AreEqual("", solutionString.RemoveTrailingZeros("0000"));
+        Assert.AreEqual("7007", solutionString.RemoveTrailingZeros("7007000"));
+    }
 }
