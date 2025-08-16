@@ -316,7 +316,7 @@ public class SolutionHashTable
         }
         return ints3;
     }
-    
+
     public bool HasGroupsSizeX(int[] deck)
     {
         //still failed 914
@@ -333,5 +333,43 @@ public class SolutionHashTable
             if (i.Value.Count != len) { return false; }
         }
         return true;
+    }
+    public int[] DistinctDifferenceArray(int[] nums)
+    {
+        //2670 optimze by makin prefix and suffix array
+        int[] result = new int[nums.Length];
+        for (int i = 0; i < nums.Length; i++)
+        {
+            HashSet<int> left = new();
+            HashSet<int> right = new();
+            for (int j = 0; j < i + 1; j++)
+            {
+                left.Add(nums[j]);
+            }
+            for (int j = i + 1; j < nums.Length; j++)
+            {
+                right.Add(nums[j]);
+            }
+            result[i] = left.Count - right.Count;
+
+        }
+        return result;
+    }
+
+    public int[] NumberOfPairs(int[] nums)
+    {
+        //2341
+        int count = 0;
+        HashSet<int> queue = [];
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (!queue.Contains(nums[i])) { queue.Add(nums[i]); }
+            else
+            {
+                queue.Remove(nums[i]);
+                count++;
+            }
+        }
+        return [count,queue.Count];
     }
 }

@@ -189,4 +189,13 @@ public class TestMath
         Assert.AreEqual(9, solutionMath.CountSymmetricIntegers(1, 100));
         Assert.AreEqual(4, solutionMath.CountSymmetricIntegers(1200, 1230));
     }
+
+    [TestMethod]
+    public void TestMinMaxDifference()
+    {
+        SolutionMath solutionMath = new();
+        Assert.AreEqual(99009, solutionMath.MinMaxDifference(11891));
+        Assert.AreEqual(99, solutionMath.MinMaxDifference(90));
+        Assert.AreEqual(9, solutionMath.MinMaxDifference(0));
+    }
 }

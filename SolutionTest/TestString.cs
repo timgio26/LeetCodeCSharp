@@ -282,4 +282,15 @@ public class TestString
         Assert.AreEqual("", solutionString.RemoveTrailingZeros("0000"));
         Assert.AreEqual("7007", solutionString.RemoveTrailingZeros("7007000"));
     }
+
+    [TestMethod]
+    public void TestLongestCommonPrefix()
+    {
+        SolutionString solutionString = new();
+        Assert.AreEqual("fl", solutionString.LongestCommonPrefix(["flower", "flow", "flight"]));
+        Assert.AreEqual("", solutionString.LongestCommonPrefix(["dog", "racecar", "car"]));
+        Assert.AreEqual("car", solutionString.LongestCommonPrefix(["car", "carring", "carbao"]));
+        Assert.AreEqual("", solutionString.LongestCommonPrefix([""]));
+        Assert.AreEqual("andi", solutionString.LongestCommonPrefix(["andi"]));
+    }
 }

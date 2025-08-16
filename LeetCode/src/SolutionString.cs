@@ -637,10 +637,66 @@ public class SolutionString
         for (int i = end; i >= 0; i--)
         {
             if (num[i] != '0') { end = i; break; }
-            if(i==0){ end = -1; }
+            if (i == 0) { end = -1; }
         }
         return num[0..(end + 1)];
-        
+
+    }
+
+    public string LongestCommonPrefix(string[] strs)
+    {
+        //14
+        StringBuilder stringBuilder = new();
+        int idx = 0;
+        bool isSame = true;
+        while (isSame)
+        {
+            char focus = new();
+            for (int i = 0; i < strs.Length; i++)
+            {
+                if (idx == strs[i].Length) { isSame = false; break; }
+                if (i == 0) { focus = strs[i][idx]; }
+                if (strs[i][idx] != focus) { isSame = false; break; }
+                if (i == strs.Length - 1) { stringBuilder.Append(strs[i][idx]); idx++; }
+            }
+        }
+        return stringBuilder.ToString();
+    }
+
+    public bool SquareIsWhite(string coordinates)
+    {
+        //1812
+        bool init = false;
+        char[] coor = coordinates.ToCharArray();
+        for (char i = 'a'; i != coor[0]; i++)
+        {
+            init = !init;
+        }
+        for (char i = '1'; i != coor[1]; i++)
+        {
+            init = !init;
+        }
+        return init;
+    }
+
+    public bool AreOccurrencesEqual(string s)
+    {
+        //1941
+        Dictionary<char, int> keyValuePairs = new();
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(s[i])) { keyValuePairs.Add(s[i], 1); }
+            else
+            {
+                keyValuePairs[s[i]]++;
+            }
+        }
+        HashSet<int> ints = new();
+        foreach (var i in keyValuePairs)
+        {
+            ints.Add(i.Value);
+        }
+        return ints.Count == 1;
     }
 }
 

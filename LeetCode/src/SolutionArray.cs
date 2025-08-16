@@ -1508,9 +1508,55 @@ public class Solution
     {
         //342 recursive
         int rem = n % 4;
-        if (n == 1 ) return true;
+        if (n == 1) return true;
         if (n <= 0 || rem != 0) return false;
         return IsPowerOfFour(n / 4);
+    }
+
+    public int[] SortArrayByParity(int[] nums)
+    {
+        //905
+        int[] result = new int[nums.Length];
+        int left = 0, right = result.Length - 1;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] % 2 == 0)
+            {
+                result[left++] = nums[i];
+                continue;
+            }
+            result[right--] = nums[i];
+        }
+        return result;
+    }
+
+    public int FindNonMinOrMax(int[] nums)
+    {
+        //2733
+        if (nums.Length < 3) { return -1; }
+        int[] miniNums = [.. nums[0..3]];
+        Array.Sort(miniNums);
+        return miniNums[1];
+    }
+
+    public int FindLucky(int[] arr)
+    {
+        //1394
+        int currLucky = -1;
+        Dictionary<int, int> keyValuePairs = new();
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(arr[i])) { keyValuePairs.Add(arr[i], 1); }
+            else
+            {
+                keyValuePairs[arr[i]]++;
+            }
+        }
+        foreach (var i in keyValuePairs)
+        {
+            if (i.Key > currLucky && i.Key ==i.Value){ currLucky = i.Key; }
+        }
+        return currLucky;
     }
 
 }

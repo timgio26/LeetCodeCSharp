@@ -408,4 +408,36 @@ public class SolutionMath
         numRevInt = Convert.ToInt32(string.Concat(numChar));
         return num == numRevInt;
     }
+
+    public int MinMaxDifference(int num)
+    {
+        //2566
+        string numArr = num.ToString();
+        char maxRep = new();
+        char minRep = new();
+        for (int i = 0; i < numArr.Length; i++)
+        {
+            if (numArr[i] != '9') { maxRep = numArr[i]; break; }
+        }
+        for (int i = 0; i < numArr.Length; i++)
+        {
+            if (numArr[i] != '0') { minRep = numArr[i]; break; }
+        }
+        int max = int.Parse(numArr.Replace(maxRep, '9'));
+        int min = int.Parse(numArr.Replace(minRep, '0'));
+        return max - min;
+    }
+
+    public int CommonFactors(int a, int b)
+    {
+        //2427
+        int min = Math.Min(a, b);
+        int count = 0;
+        for (int i = 1; i <= min; i++)
+        {
+            if(a%i==0 && b%i==0){ count++; }
+        }
+        return count;
+
+    }
 }
