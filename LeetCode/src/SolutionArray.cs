@@ -1554,9 +1554,111 @@ public class Solution
         }
         foreach (var i in keyValuePairs)
         {
-            if (i.Key > currLucky && i.Key ==i.Value){ currLucky = i.Key; }
+            if (i.Key > currLucky && i.Key == i.Value) { currLucky = i.Key; }
         }
         return currLucky;
+    }
+
+    public int BusyStudent(int[] startTime, int[] endTime, int queryTime)
+    {
+        //1450
+        int count = 0;
+        for (int i = 0; i < startTime.Length; i++)
+        {
+            if (startTime[i] <= queryTime && endTime[i] >= queryTime)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int[] ApplyOperations(int[] nums)
+    {
+        //2460
+        int count = 0;
+        int[] result = new int[nums.Length];
+        for (int i = 0; i < nums.Length - 1; i++)
+        {
+            int left = nums[i];
+            int right = nums[i + 1];
+            if (left != right) { continue; }
+            nums[i] = left * 2;
+            nums[i + 1] = 0;
+        }
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] == 0) { continue; }
+            result[count] = nums[i];
+            count++;
+        }
+        return result;
+    }
+
+    public int[][] Transpose(int[][] matrix)
+    {
+        //867 my mind make it harder
+        List<int[]> ints = new();
+        bool check = true;
+        int count = 0;
+        while (check)
+        {
+            List<int> ints1 = new();
+            int endCount = 0;
+            for (int i = 0; i < matrix.Length; i++)
+            {
+                if (count < matrix[i].Length)
+                {
+                    ints1.Add(matrix[i][count]);
+                    continue;
+                }
+                endCount++;
+            }
+            count++;
+            if (endCount == matrix.Length) { check = false; }
+            else
+            {
+                ints.Add(ints1.ToArray());
+            }
+        }
+        return ints.ToArray();
+    }
+
+    public int FindMaxK(int[] nums)
+    {
+        //2441
+        Array.Sort(nums);
+        int left = 0, right = nums.Length - 1;
+        bool found = false;
+        while (!found)
+        {
+            if (left >= right) { break; }
+            if (nums[left] * -1 == nums[right]) { found = true; continue; }
+            if (nums[left] * -1 < nums[right]) { right--; } else { left++; }
+        }
+        return found ? nums[right] : -1;
+    }
+
+    public bool ContainsDuplicate(int[] nums)
+    {
+        //217
+        HashSet<int> ints = new(nums);
+        return ints.Count != nums.Length;
+    }
+
+    public int MajorityElement(int[] nums)
+    {
+        //169
+        Dictionary<int, int> keyValuePairs = new();
+        int minLen = nums.Length / 2;
+        int result = new();
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(nums[i])) { keyValuePairs.Add(nums[i], 0); }
+            keyValuePairs[nums[i]]++;
+            if(keyValuePairs[nums[i]]>minLen){ result = nums[i]; break; }
+        }
+        return result;
     }
 
 }

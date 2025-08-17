@@ -698,5 +698,36 @@ public class SolutionString
         }
         return ints.Count == 1;
     }
+
+    public IList<string> SplitWordsBySeparator(IList<string> words, char separator)
+    {
+        //2788
+        List<string> strings = new();
+        for (int i = 0; i < words.Count; i++)
+        {
+            string[] sep = words[i].Split(separator);
+            for (int j = 0; j < sep.Length; j++)
+            {
+                if (sep[j].Length > 0) { strings.Add(sep[j]); }
+            }
+        }
+        return [.. strings];
+    }
+
+    public int MinDeletionSize(string[] strs)
+    {
+        //944
+        int delCol = 0;
+        int strLen = strs[0].Length;
+        for (int i = 0; i < strLen; i++)
+        {
+            for (int j = 0; j < strs.Length - 1; j++)
+            {
+                if (strs[j + 1][i] < strs[j][i]) { delCol++; break; }
+            }
+        }
+        return delCol;
+
+    }
 }
 

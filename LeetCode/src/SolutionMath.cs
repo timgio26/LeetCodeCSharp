@@ -435,9 +435,43 @@ public class SolutionMath
         int count = 0;
         for (int i = 1; i <= min; i++)
         {
-            if(a%i==0 && b%i==0){ count++; }
+            if (a % i == 0 && b % i == 0) { count++; }
         }
         return count;
 
+    }
+
+    public bool IsPalindrome(int x)
+    {
+        //9
+        string xStr = x.ToString();
+        bool ans = true;
+        int left = 0, right = xStr.Length - 1;
+        while (left < right)
+        {
+            if (xStr[left] != xStr[right]) { ans = false; break; }
+            left++; right--;
+        }
+        return ans;
+    }
+
+    public int[] PlusOne(int[] digits)
+    {
+        //66
+        Stack<int> ints = new();
+        int rem = 1;
+        for (int i = digits.Length - 1; i >= 0; i--)
+        {
+
+            ints.Push((digits[i] + rem) % 10);
+            rem = (digits[i] + rem) / 10;
+        }
+        if (rem > 0) { ints.Push(rem); }
+        int[] result = new int[ints.Count];
+        for (int i = 0; i < result.Length; i++)
+        {
+            result[i] = ints.Pop();
+        }
+        return result;
     }
 }

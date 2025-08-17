@@ -8,9 +8,12 @@ using LeetCode.src;
 // System.Console.WriteLine(mySolution.GetDecimalValue(node1));
 
 Solution mySolution = new();
-char myChar = 'z';
-myChar++;
-System.Console.WriteLine(myChar);
+// char myChar = 'z';
+// myChar++;
+// System.Console.WriteLine(myChar);
+System.Console.WriteLine('b' >= 'd');
+int num = -123;
+System.Console.WriteLine(num.ToString());
 // mySolution.ValidMountainArray([0, 3, 2, 1]);
 // // mySolution.IsPowerOfTwo(1);
 // mySolution.Decrypt([5, 7, 1, 4], 3);
