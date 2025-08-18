@@ -1656,9 +1656,31 @@ public class Solution
         {
             if (!keyValuePairs.ContainsKey(nums[i])) { keyValuePairs.Add(nums[i], 0); }
             keyValuePairs[nums[i]]++;
-            if(keyValuePairs[nums[i]]>minLen){ result = nums[i]; break; }
+            if (keyValuePairs[nums[i]] > minLen) { result = nums[i]; break; }
         }
         return result;
+    }
+
+    public bool IsValid(string s)
+    {
+        //20 can improve by using dict
+        bool result = true;
+        Stack<char> chars = new();
+        string openPar = "([{";
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (openPar.Contains(s[i])) { chars.Push(s[i]); continue; }
+            if (chars.Count != 0)
+            {
+            if (chars.Peek() == '(' && s[i] == ')') { chars.Pop(); continue; }
+            if (chars.Peek() == '[' && s[i] == ']') { chars.Pop(); continue; }
+            if (chars.Peek() == '{' && s[i] == '}') { chars.Pop(); continue; }
+            }
+            result = false;
+            break;
+        }
+
+        return chars.Count==0?result:false;
     }
 
 }

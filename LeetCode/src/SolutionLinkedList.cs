@@ -60,4 +60,68 @@ public class SolutionLinkedList
         string binStr = string.Concat(ints2);
         return Convert.ToInt32(binStr, 2);
     }
+
+    public ListNode DeleteDuplicates(ListNode head)
+    {
+        //83 bisa improve pake int? prev = null; or in place
+        ListNode listNode = new();
+        ListNode result = listNode;
+        int pref = new();
+        int count = 0;
+        while (head != null)
+        {
+            if (head.val != pref || count == 0)
+            {
+                ListNode newNode = new(head.val);
+                listNode.next = newNode;
+                listNode = listNode.next;
+            }
+            pref = head.val;
+            head = head.next;
+            count++;
+        }
+        return result.next;
+    }
+
+    public ListNode MergeNodes(ListNode head)
+    {
+        //2181
+        ListNode listNode = new();
+        ListNode result = listNode;
+        int val = 0;
+        while (head != null)
+        {
+            if (val > 0 & head.val == 0)
+            {
+                ListNode newNode = new(val);
+                listNode.next = newNode;
+                listNode = listNode.next;
+                val = 0;
+            }
+            val += head.val;
+            head = head.next;
+        }
+        return result.next;
+    }
+
+    public ListNode ReverseList(ListNode head)
+    {
+        //206 bisa improve pake reverse pointer current.next = prev;
+        Stack<int> ints = new();
+        while (head != null)
+        {
+            ints.Push(head.val);
+            head = head.next;
+        }
+
+        ListNode listNode = new();
+        ListNode result = listNode;
+        foreach (int i in ints)
+        {
+            ListNode newNode = new(i);
+            listNode.next = newNode;
+            listNode = listNode.next;
+        }
+        return result.next;
+    }
 }

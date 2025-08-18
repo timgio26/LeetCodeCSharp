@@ -698,4 +698,15 @@ public sealed class TestArray
         Assert.IsFalse(solution.IsPowerOfFour(-2147483648));
     }
 
+    [TestMethod]
+    public void TestIsValid()
+    {
+        Solution solution = new();
+        Assert.IsTrue(solution.IsValid("()[]{}"));
+        Assert.IsFalse(solution.IsValid("(]"));
+        Assert.IsTrue(solution.IsValid("([])"));
+        Assert.IsFalse(solution.IsValid("([)]"));
+        Assert.IsFalse(solution.IsValid("]"));
+    }
+
 }
