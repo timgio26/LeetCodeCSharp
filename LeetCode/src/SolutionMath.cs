@@ -474,4 +474,39 @@ public class SolutionMath
         }
         return result;
     }
+
+    public int CountLargestGroup(int n)
+    {
+        //1399
+        Dictionary<int, int> keyValuePairs = new();
+        for (int i = 1; i <= n; i++)
+        {
+            int num = i;
+            int sumDigit = 0;
+            while (num > 0)
+            {
+                sumDigit += num % 10;
+                num /= 10;
+            }
+            if (!keyValuePairs.ContainsKey(sumDigit)) { keyValuePairs.Add(sumDigit, 0); }
+            keyValuePairs[sumDigit]++;
+
+        }
+        int max = int.MinValue, count = 0;
+        foreach (var i in keyValuePairs)
+        {
+            if (i.Value > max)
+            {
+                max = i.Value;
+                count = 0;
+            }
+            if (i.Value == max)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    
 }

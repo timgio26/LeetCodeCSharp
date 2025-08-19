@@ -370,6 +370,80 @@ public class SolutionHashTable
                 count++;
             }
         }
-        return [count,queue.Count];
+        return [count, queue.Count];
+    }
+
+    public char RepeatedCharacter(string s)
+    {
+        //2351
+        Dictionary<char, int> keyValuePairs = new();
+        char ans = new();
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(s[i])) { keyValuePairs.Add(s[i], 1); }
+            else
+            {
+                keyValuePairs[s[i]]++;
+                if (keyValuePairs[s[i]] > 1) { ans = s[i]; break; }
+            }
+        }
+        return ans;
+    }
+
+    public IList<string> CommonChars(string[] words)
+    {
+        //1002 harder than i thought
+        List<string> result = [];
+        Dictionary<int, List<char>> keyValuePairs = new();
+        int len = words.Length - 1;
+        for (int i = 0; i < words.Length; i++)
+        {
+            keyValuePairs.Add(i, words[i].ToCharArray().ToList());
+        }
+        foreach (char i in keyValuePairs[0])
+        {
+            foreach (var j in keyValuePairs)
+            {
+                if (j.Key != 0)
+                {
+                    if (j.Value.Contains(i)) { j.Value.Remove(i); } else { break; }
+                }
+                if (j.Key == len) { result.Add(i.ToString()); }
+            }
+        }
+        return result;
+    }
+
+    public string[] UncommonFromSentences(string s1, string s2)
+    {
+        //884
+        string[] s1Arr = s1.Split(' '), s2Arr = s2.Split(' ');
+        Dictionary<string, int> keyValuePairsS1 = new(), keyValuePairsS2 = new();
+        List<string> result = new();
+        for (int i = 0; i < s1Arr.Length; i++)
+        {
+            if (!keyValuePairsS1.ContainsKey(s1Arr[i])) { keyValuePairsS1.Add(s1Arr[i], 1); }
+            else
+            {
+                keyValuePairsS1[s1Arr[i]]++;
+            }
+        }
+        for (int i = 0; i < s2Arr.Length; i++)
+        {
+            if (!keyValuePairsS2.ContainsKey(s2Arr[i])) { keyValuePairsS2.Add(s2Arr[i], 1); }
+            else
+            {
+                keyValuePairsS2[s2Arr[i]]++;
+            }
+        }
+        foreach (var i in keyValuePairsS1)
+        {
+            if (i.Value == 1 && !keyValuePairsS2.ContainsKey(i.Key)) { result.Add(i.Key); }
+        }
+        foreach (var i in keyValuePairsS2)
+        {
+            if (i.Value == 1 && !keyValuePairsS1.ContainsKey(i.Key)) { result.Add(i.Key); }
+        }
+        return result.ToArray();
     }
 }

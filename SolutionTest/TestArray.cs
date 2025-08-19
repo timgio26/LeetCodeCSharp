@@ -709,4 +709,12 @@ public sealed class TestArray
         Assert.IsFalse(solution.IsValid("]"));
     }
 
+    [TestMethod]
+    public void TestMinSubsequence()
+    {
+        Solution solution = new();
+        int[] expect = [10, 9];
+        CollectionAssert.AreEqual(expect, (int[])solution.MinSubsequence([4, 3, 10, 9, 8]));
+    }
+
 }

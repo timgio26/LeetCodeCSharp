@@ -1672,15 +1672,33 @@ public class Solution
             if (openPar.Contains(s[i])) { chars.Push(s[i]); continue; }
             if (chars.Count != 0)
             {
-            if (chars.Peek() == '(' && s[i] == ')') { chars.Pop(); continue; }
-            if (chars.Peek() == '[' && s[i] == ']') { chars.Pop(); continue; }
-            if (chars.Peek() == '{' && s[i] == '}') { chars.Pop(); continue; }
+                if (chars.Peek() == '(' && s[i] == ')') { chars.Pop(); continue; }
+                if (chars.Peek() == '[' && s[i] == ']') { chars.Pop(); continue; }
+                if (chars.Peek() == '{' && s[i] == '}') { chars.Pop(); continue; }
             }
             result = false;
             break;
         }
 
-        return chars.Count==0?result:false;
+        return chars.Count == 0 ? result : false;
+    }
+    public IList<int> MinSubsequence(int[] nums)
+    {
+        //1403 bisa descending sort dari awal, pake int aja gk perlu slice and sum
+        Array.Sort(nums);
+        int len = nums.Length;
+        int start = new();
+        for (int i = len; i > 0; i--)
+        {
+            if (nums[0..(i - 1)].Sum() < nums[(i - 1)..len].Sum())
+            {
+                start = i;
+                break;
+            }
+        }
+        int[] ans = nums[(start - 1)..len];
+        Array.Sort(ans, (a, b) => b.CompareTo(a));
+        return ans;
     }
 
 }

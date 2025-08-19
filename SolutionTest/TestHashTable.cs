@@ -128,6 +128,17 @@ public class TestHashTable
     {
         SolutionHashTable sol = new();
         Assert.IsTrue(sol.HasGroupsSizeX([1, 2, 3, 4, 4, 3, 2, 1]));
-        Assert.IsFalse(sol.HasGroupsSizeX([1,1,1,2,2,2,3,3]));
+        Assert.IsFalse(sol.HasGroupsSizeX([1, 1, 1, 2, 2, 2, 3, 3]));
+    }
+
+    [TestMethod]
+    public void TestCommonChars()
+    {
+        SolutionHashTable sol = new();
+        string[] expect = ["c", "l", "o", "o"];
+        CollectionAssert.AreEquivalent(expect, (List<string>)sol.CommonChars(["cool"]));
+        expect = ["e","l","l"];
+        CollectionAssert.AreEquivalent(expect,(List<string>)sol.CommonChars(["bella","label","roller"]));
+
     }
 }
