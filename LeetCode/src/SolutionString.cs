@@ -727,7 +727,39 @@ public class SolutionString
             }
         }
         return delCol;
+    }
 
+    public string RemoveDuplicates(string s)
+    {
+        //1047
+        Stack<char> chars = new();
+        for (int i = 0; i < s.Length; i++)
+        {
+            if (chars.TryPeek(out char top) && top == s[i]) { chars.Pop(); }
+            else
+            {
+                chars.Push(s[i]);
+            }
+        }
+        char[] chars1 = [.. chars];
+        Array.Reverse(chars1);
+        return string.Concat(chars1);
+    }
+
+    public int StrStr(string haystack, string needle)
+    {
+        //28
+        int result = -1;
+        for (int i = 0; i < haystack.Length - needle.Length + 1; i++)
+        {
+            // System.Console.WriteLine(haystack[i..needle.Length]);
+            if (haystack[i..(i+needle.Length)] == needle)
+            {
+                result = i;
+                break;
+            }
+        }
+        return result;
     }
 }
 

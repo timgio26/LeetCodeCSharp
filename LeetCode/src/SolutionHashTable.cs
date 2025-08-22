@@ -446,4 +446,60 @@ public class SolutionHashTable
         }
         return result.ToArray();
     }
+
+    public int RepeatedNTimes(int[] nums)
+    {
+        //961
+        int rep = nums.Length / 2;
+        Dictionary<int, int> keyValuePairs = new();
+        int result = new();
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(nums[i]))
+            {
+                keyValuePairs.Add(nums[i], 1);
+            }
+            else
+            {
+                keyValuePairs[nums[i]]++;
+            }
+        }
+        foreach (var i in keyValuePairs)
+        {
+            if (i.Value == rep) { result = i.Key; break; }
+        }
+        return result;
+    }
+
+    public int CountWords(string[] words1, string[] words2)
+    {
+        //2085
+        int count = 0;
+        Dictionary<string, int> keyValuePairs1 = new();
+        Dictionary<string, int> keyValuePairs2 = new();
+        for (int i = 0; i < words1.Length; i++)
+        {
+            if (!keyValuePairs1.ContainsKey(words1[i])) { keyValuePairs1.Add(words1[i], 1); }
+            else
+            {
+                keyValuePairs1[words1[i]]++;
+            }
+        }
+        for (int i = 0; i < words2.Length; i++)
+        {
+            if (!keyValuePairs2.ContainsKey(words2[i])) { keyValuePairs2.Add(words2[i], 1); }
+            else
+            {
+                keyValuePairs2[words2[i]]++;
+            }
+        }
+        foreach (var i in keyValuePairs1)
+        {
+            if (i.Value == 1 && keyValuePairs2.ContainsKey(i.Key))
+            {
+                if (keyValuePairs2[i.Key] == 1) { count++; }
+            }
+        }
+        return count;
+    }
 }

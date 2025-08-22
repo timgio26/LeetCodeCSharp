@@ -1682,6 +1682,7 @@ public class Solution
 
         return chars.Count == 0 ? result : false;
     }
+    
     public IList<int> MinSubsequence(int[] nums)
     {
         //1403 bisa descending sort dari awal, pake int aja gk perlu slice and sum
@@ -1701,4 +1702,59 @@ public class Solution
         return ans;
     }
 
+    public int[] Intersect(int[] nums1, int[] nums2)
+    {
+        //350
+        List<int> min = [.. nums1.Length > nums2.Length ? nums2 : nums1], max = [.. nums1.Length > nums2.Length ? nums1 : nums2];
+        List<int> result = new();
+        for (int i = 0; i < min.Count; i++)
+        {
+            if (max.Contains(min[i])) { result.Add(min[i]); max.Remove(min[i]); }
+        }
+        return result.ToArray();
+    }
+
+    public IList<int> FindDisappearedNumbers(int[] nums)
+    {
+        //448
+        int n = nums.Length;
+        HashSet<int> ints = [.. nums];
+        List<int> result = new();
+        for (int i = 0; i < n; i++)
+        {
+            if (ints.Contains(i + 1)) { ints.Remove(i + 1); }
+            else
+            {
+                result.Add(i + 1);
+            }
+        }
+        return result;
+    }
+
+    public int MinimumOperations2357(int[] nums)
+    {
+        //2357
+        HashSet<int> ints = [.. nums];
+        int count = 0;
+        foreach (int i in ints)
+        {
+            if (i > 0) { count++; }
+        }
+        return count;
+    }
+
+    public bool ContainsNearbyDuplicate(int[] nums, int k)
+    {
+        //219 still failed time limit
+        bool ans = false;
+        for (int i = 0; i < nums.Length - 1; i++)
+        {
+            for (int j = 1; j <= k; j++)
+            {
+                if(i+j>nums.Length-1){ continue; }
+                if (nums[i] == nums[i + j]) { ans = true; break; }
+            }
+        }
+        return ans;
+    }
 }

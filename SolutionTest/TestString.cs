@@ -293,4 +293,13 @@ public class TestString
         Assert.AreEqual("", solutionString.LongestCommonPrefix([""]));
         Assert.AreEqual("andi", solutionString.LongestCommonPrefix(["andi"]));
     }
+
+    [TestMethod]
+    public void TestStrStr()
+    {
+        SolutionString solutionString = new();
+        Assert.AreEqual(2, solutionString.StrStr("hello", "ll"));
+        Assert.AreEqual(3, solutionString.StrStr("hello", "lo"));
+        Assert.AreEqual(0, solutionString.StrStr("h", "h"));
+    }
 }

@@ -7,8 +7,10 @@ using LeetCode.src;
 // List<int> ints = [1, 2, 3, 4];
 // ints.Contains(1);
 // System.Console.WriteLine(ints.Count);
-SolutionHashTable solutionHashTable = new();
-solutionHashTable.CommonChars(["bella", "label", "roller"]);
+// SolutionHashTable solutionHashTable = new();
+// solutionHashTable.CommonChars(["bella", "label", "roller"]);
+SolutionString solutionString = new();
+solutionString.StrStr("hello", "ll");
 
 
 
