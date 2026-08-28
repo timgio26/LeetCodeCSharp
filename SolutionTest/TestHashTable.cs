@@ -141,4 +141,13 @@ public class TestHashTable
         CollectionAssert.AreEquivalent(expect,(List<string>)sol.CommonChars(["bella","label","roller"]));
 
     }
+
+    [TestMethod]
+    public void TestDigitFreqScore()
+    {
+        SolutionHashTable sol = new();
+        //int expect = 5;
+        Assert.AreEqual(5, sol.DigitFrequencyScore(122));
+
+    }
 }

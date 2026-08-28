@@ -1757,4 +1757,15 @@ public class Solution
         }
         return ans;
     }
+
+    public int[] FindDegrees(int[][] matrix)
+    {
+        List<int> ans = [];
+        for (int i = 0; i < matrix.Length; i++)
+        {
+            ans.Add(matrix[i].Sum());
+
+        }
+        return ans.ToArray();
+    }
 }

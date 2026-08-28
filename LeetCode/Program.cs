@@ -9,8 +9,11 @@ using LeetCode.src;
 // System.Console.WriteLine(ints.Count);
 // SolutionHashTable solutionHashTable = new();
 // solutionHashTable.CommonChars(["bella", "label", "roller"]);
-SolutionString solutionString = new();
-solutionString.StrStr("hello", "ll");
+//SolutionString solutionString = new();
+//solutionString.StrStr("hello", "ll");
+SolutionHashTable solution = new();
+int ans = solution.DigitFrequencyScore(122);
+Console.WriteLine(ans);
 
 
 

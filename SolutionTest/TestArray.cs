@@ -717,4 +717,12 @@ public sealed class TestArray
         CollectionAssert.AreEqual(expect, (int[])solution.MinSubsequence([4, 3, 10, 9, 8]));
     }
 
+    [TestMethod]
+    public void TestFindDegrees()
+    {
+        Solution solution = new();
+        int[] expect = [1,1,0];
+        CollectionAssert.AreEqual(expect, (int[])solution.FindDegrees([[0, 1, 0], [1, 0, 0], [0, 0, 0]]));
+    }
+
 }

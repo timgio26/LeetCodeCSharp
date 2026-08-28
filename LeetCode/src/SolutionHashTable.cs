@@ -1,5 +1,5 @@
-using System;
-using System.Text;
+using System.Collections.Immutable;
+
 
 namespace LeetCode.src;
 
@@ -501,5 +501,37 @@ public class SolutionHashTable
             }
         }
         return count;
+    }
+
+    public int DigitFrequencyScore(int n)
+    {
+        //3945
+        int ans = 0;
+        Dictionary<char, int> keyValuePairs = new();
+        string nstr = n.ToString();
+        for (int i = 0; i < nstr.Length; i++)
+        {
+            if (!keyValuePairs.ContainsKey(nstr[i]))
+            {
+                keyValuePairs.Add(nstr[i], 1);
+            }
+            else
+            {
+                keyValuePairs[nstr[i]]++;
+            }
+        }
+
+        foreach (var i in keyValuePairs)
+        {
+
+            
+            ans += (i.Key - '0') * i.Value;
+        }
+        return ans;
+
+
+
+
+
     }
 }
